@@ -1,0 +1,443 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.header {
+    width: 100%;
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 12px 4%;
+    background: #151a20;
+    color: #f4f5f6;
+    border-bottom: 2px solid #3b444d;
+    margin-left: 0px;
+}
+
+.brand {
+    flex-shrink: 0;
+    min-width: 245px;
+}
+
+.brand h1 {
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.brand p {
+    margin-top: 3px;
+    font-size: 15px;
+    color: #d0d4da;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 3.5vw, 46px);
+    height: 100%;
+}
+
+.nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 56px;
+
+    color: #d5d7db;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+.nav-link.active {
+    color: #ffffff;
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #27d9c5;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    flex-shrink: 0;
+
+    color: #d5d7db;
+    text-decoration: none;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.about:hover {
+    color: #ffffff;
+}
+
+.info-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #929aa4;
+    border-radius: 50%;
+    color: #c5cbd2;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+h1{
+    font-size: 26px;
+    text-align: center;
+}
+
+h2{
+    font-family: Arial, Helvetica, sans-serif;   
+    font-size: 16px;
+    text-align: justify ;
+    font-weight: normal;
+}
+
+h3{
+    font-family: Arial, Helvetica, sans-serif;   
+    font-size: 16px;
+    text-align: justify ;
+    font-weight: normal;
+}    
+
+h4{
+    font-family: Arial, Helvetica, sans-serif;   
+    font-size: 16px;
+    text-align: justify ;
+    font-weight: normal;
+}
+
+h5{
+    font-family: Arial, Helvetica, sans-serif;   
+    font-size: 16px;
+    text-align: justify ;
+    font-weight: normal;
+}
+
+h6{
+    font-family: Arial, Helvetica, sans-serif;   
+    font-size: 16px;
+    text-align: justify ;
+    font-weight: normal;
+}
+
+main{
+    margin:40px;
+}
+
+.brand {
+    flex-shrink: 0;
+    min-width: 245px;
+    text-align: left;
+}
+
+.brand h1 {
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    text-align: left;
+}
+
+.brand p {
+    margin-top: 3px;
+    font-size: 15px;
+    color: #d0d4da;
+    text-align: left;
+}
+
+
+/* MISE EN PAGE DE L'ENQUÊTE */
+
+.enquete {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 35px;
+}
+
+/* Titre principal */
+.enquete h1 {
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #151a20;
+}
+
+/* Paragraphes */
+.enquete p {
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: justify;
+    color: #333b43;
+    margin-bottom: 18px;
+}
+
+/* Titres des grandes parties */
+.enquete h2 {
+    font-size: 21px;
+    font-weight: bold;
+    text-align: left;
+    color: #151a20;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #27d9c5;
+}
+
+/* Titres des sous-parties */
+.enquete h3 {
+    font-size: 17px;
+    font-weight: bold;
+    text-align: left;
+    color: #26333d;
+    margin-top: 28px;
+    margin-bottom: 15px;
+}
+
+/* Listes */
+.enquete ul {
+    margin: 15px 0 22px 35px;
+}
+
+.enquete li {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #333b43;
+    margin-bottom: 7px;
+    padding-left: 5px;
+}
+
+/* Mots importants */
+.enquete strong {
+    font-weight: bold;
+    color: #151a20;
+}
+
+/* Formule de calcul */
+.enquete .formule {
+    background-color: #e8f7f5;
+    border-left: 4px solid #27d9c5;
+    padding: 18px;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+    color: #151a20;
+}
+
+/* Paragraphes de conclusion */
+.enquete .phrase-finale {
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+/* Adaptation aux téléphones */
+@media screen and (max-width: 768px) {
+
+    .enquete {
+        margin: 25px auto;
+        padding: 0 18px;
+    }
+
+    .enquete h1 {
+        font-size: 23px;
+    }
+
+    .enquete h2 {
+        font-size: 19px;
+        margin-top: 35px;
+    }
+
+    .enquete h3 {
+        font-size: 16px;
+    }
+
+    .enquete p,
+    .enquete li {
+        font-size: 14px;
+    }
+}
+
+/* MENUS DEROULANTS DE L'ENQUETE */
+
+.menu-enquete {
+    margin: 20px 0;
+    background-color: #ffffff;
+    border: 1px solid #d9e2e5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Titre cliquable */
+.menu-enquete summary {
+    padding: 18px 22px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #151a20;
+    background-color: #e8f7f5;
+    cursor: pointer;
+    list-style: none;
+}
+
+/* Enlever la flèche par défaut */
+.menu-enquete summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Ajouter une flèche personnalisée */
+.menu-enquete summary::after {
+    content: "+";
+    float: right;
+    font-size: 22px;
+    color: #151a20;
+}
+
+/* Changer le + en - quand le menu est ouvert */
+.menu-enquete[open] summary::after {
+    content: "−";
+}
+
+/* Effet au survol */
+.menu-enquete summary:hover {
+    background-color: #d4f2ee;
+}
+
+/* Contenu du menu */
+.menu-enquete p,
+.menu-enquete ul {
+    padding: 15px 22px;
+}
+
+.menu-enquete p {
+    margin-bottom: 10px;
+}
+
+
+/* MISE EN PAGE DE LA CONCLUSION */
+
+.conclusion {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 35px;
+}
+
+.conclusion h1 {
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 35px;
+    color: #151a20;
+}
+
+/* Menus déroulants */
+
+.menu-conclusion {
+    margin: 20px 0;
+    background-color: #ffffff;
+    border: 1px solid #d9e2e5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.menu-conclusion summary {
+    padding: 18px 22px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #151a20;
+    background-color: #e8f7f5;
+    cursor: pointer;
+    list-style: none;
+}
+
+.menu-conclusion summary::-webkit-details-marker {
+    display: none;
+}
+
+.menu-conclusion summary::after {
+    content: "+";
+    float: right;
+    font-size: 22px;
+    color: #151a20;
+}
+
+.menu-conclusion[open] summary::after {
+    content: "−";
+}
+
+.menu-conclusion summary:hover {
+    background-color: #d4f2ee;
+}
+
+/* Texte à l'intérieur des menus */
+
+.menu-conclusion p {
+    padding: 10px 22px;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: justify;
+    color: #333b43;
+    margin-bottom: 10px;
+}
+
+.menu-conclusion strong {
+    font-weight: bold;
+    color: #151a20;
+}
+
+.menu-conclusion .phrase-finale {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+/* Version téléphone */
+
+@media screen and (max-width: 768px) {
+    .conclusion {
+        margin: 25px auto;
+        padding: 0 18px;
+    }
+
+    .conclusion h1 {
+        font-size: 23px;
+    }
+
+    .menu-conclusion summary {
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .menu-conclusion p {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}

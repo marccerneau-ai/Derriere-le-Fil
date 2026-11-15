@@ -1,0 +1,1421 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enquête TikTok — Analyse mathématique</title>
+
+<script>
+MathJax = {
+  tex: {inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']]}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+ --bg:#090b12;
+ --card:#151a27;
+ --text:#f4f5fa;
+ --muted:#a3aabc;
+ --pink:#ff477e;
+ --blue:#36d9e8;
+ --purple:#9275ff;
+ --border:#2a3040;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+
+body{
+ background:var(--bg);
+ color:var(--text);
+ font-family:Inter,sans-serif;
+ line-height:1.75;
+}
+
+nav{
+ position:sticky;top:0;z-index:10;
+ background:#090b12ed;
+ backdrop-filter:blur(15px);
+ border-bottom:1px solid var(--border);
+ padding:17px 6%;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:15px;
+}
+
+.logo{font-weight:800;font-size:20px;white-space:nowrap}
+.logo span{color:var(--pink)}
+
+nav div:last-child{display:flex;gap:17px;flex-wrap:wrap}
+nav a{font-size:12px;color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--blue)}
+
+.hero{
+ padding:105px 10%;
+ background:
+ radial-gradient(circle at 85% 20%,#45214e 0%,transparent 35%),
+ radial-gradient(circle at 10% 90%,#123e4b 0%,transparent 35%);
+}
+
+.tag{
+ display:inline-block;padding:7px 14px;
+ border:1px solid #36d9e855;
+ color:var(--blue);border-radius:30px;
+ font-size:11px;letter-spacing:2px;
+ margin-bottom:25px;
+}
+
+h1{font-size:clamp(38px,6vw,68px);line-height:1.15;letter-spacing:-2px}
+h1 span{
+ background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+ color:transparent;background-clip:text;
+}
+
+.hero p{color:var(--muted);max-width:750px;margin-top:25px}
+
+.hero a{
+ display:inline-block;margin-top:30px;
+ background:var(--pink);color:white;
+ text-decoration:none;padding:12px 23px;
+ border-radius:8px;font-weight:700;
+}
+
+section{padding:75px 10%;scroll-margin-top:75px}
+.section-label{
+ color:var(--blue);font-size:11px;
+ letter-spacing:3px;font-weight:800;
+ margin-bottom:12px;
+}
+
+h2{font-size:clamp(27px,4vw,39px);line-height:1.25;margin-bottom:22px}
+h3{font-size:18px;margin-bottom:12px}
+p{color:var(--muted);margin-bottom:13px}
+strong{color:var(--text)}
+
+.question,.conclusion-box{
+ background:var(--card);padding:27px;
+ border-left:4px solid var(--pink);
+ border-radius:10px;margin-top:25px;
+}
+
+.cards{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:18px;margin-top:30px;
+}
+
+.card{
+ background:var(--card);border:1px solid var(--border);
+ padding:25px;border-radius:14px;
+ transition:.25s;
+}
+
+.card:hover{transform:translateY(-4px);border-color:var(--blue)}
+.number{font-size:31px;font-weight:800;color:var(--pink)}
+.card p{font-size:13px;margin-bottom:0}
+
+.dark{background:#0e121d}
+
+.formula{
+ background:linear-gradient(120deg,#26192f,#142d38);
+ border:1px solid #51446d;
+ padding:25px 15px;border-radius:13px;
+ text-align:center;margin:25px 0;
+ overflow-x:auto;
+}
+
+.formula .math{font-size:clamp(16px,2.4vw,23px);color:white}
+.formula p{font-size:12px;margin:12px 0 0}
+
+.explain{
+ border:1px solid var(--border);
+ background:#111622;padding:22px;
+ border-radius:12px;margin:20px 0;
+}
+
+.explain ul{padding-left:22px;color:var(--muted)}
+.explain li{margin:7px 0}
+
+.note{
+ background:#292318;border:1px solid #78602d;
+ color:#e9d9a9;padding:22px;border-radius:12px;
+ margin:25px 0;font-size:14px;
+}
+
+.result{
+ background:#191e2c;border:1px solid var(--border);
+ border-radius:14px;padding:23px;margin:22px 0;
+}
+
+.result .big{
+ font-size:42px;font-weight:800;color:var(--pink);
+ line-height:1.3;
+}
+
+.result .blue{color:var(--blue)}
+.result .purple{color:var(--purple)}
+
+.person-title{
+ display:flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+
+.avatar{
+ width:43px;height:43px;border-radius:50%;
+ display:grid;place-items:center;
+ background:#302541;font-weight:800;font-size:19px;
+}
+
+.chart-box{
+ background:var(--card);border:1px solid var(--border);
+ padding:25px;border-radius:14px;margin-top:25px;
+}
+
+.chart-box canvas{max-height:350px}
+
+table{
+ width:100%;border-collapse:collapse;
+ margin:20px 0;font-size:13px;
+}
+
+th,td{
+ text-align:left;padding:13px;
+ border-bottom:1px solid var(--border);
+}
+
+th{color:var(--blue);background:#151b28}
+td{color:var(--muted)}
+
+.conclusion{
+ background:radial-gradient(circle at 90% 90%,#30204c,transparent 45%);
+}
+
+footer{
+ text-align:center;padding:30px;
+ border-top:1px solid var(--border);
+ color:var(--muted);font-size:12px;
+}
+
+@media(max-width:650px){
+ nav{align-items:flex-start;flex-direction:column}
+ nav div:last-child{gap:12px}
+ section{padding:55px 6%}
+ .hero{padding:75px 7%}
+ table{font-size:11px}
+ th,td{padding:8px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+ <div class="logo">TIK<span>●</span>ALGO</div>
+ <div>
+  <a href="#introduction">Introduction</a>
+  <a href="#theorie">Modèles</a>
+  <a href="#marc">Marc</a>
+  <a href="#juliette">Juliette</a>
+  <a href="#tristan">Tristan</a>
+  <a href="#bilan">Bilan</a>
+ </div>
+</nav>
+
+<header class="hero">
+ <div class="tag">ENQUÊTE • SCIENCES • ALGORITHMES</div>
+ <h1>Comment nos interactions influencent-elles <span>les recommandations TikTok ?</span></h1>
+ <p>
+ Une étude mathématique et expérimentale de la personnalisation
+ du fil « Pour toi », à travers trois comptes et une mobilisation
+ annoncée pour le 17 octobre 2026.
+ </p>
+ <a href="#introduction">Explorer l'enquête ↓</a>
+</header>
+
+<!-- INTRODUCTION -->
+
+<section id="introduction">
+ <div class="section-label">INTRODUCTION</div>
+ <h2>La personnalisation du fil « Pour toi »</h2>
+
+ <p>
+ Cette enquête cherche à comprendre comment les interactions
+ d'un utilisateur avec TikTok influencent la composition de
+ son fil « Pour toi », notamment lorsqu'il est exposé à des
+ contenus concernant la mobilisation annoncée pour le
+ 17 octobre 2026.
+ </p>
+
+ <div class="question">
+ <strong>Question centrale :</strong><br>
+ Dans quelle mesure le fait de signaler un désintérêt,
+ d'aimer une vidéo ou de simplement la regarder modifie-t-il
+ la proportion de contenus recommandés en rapport avec une mobilisation ?
+ </div>
+
+ <div class="cards">
+  <div class="card">
+   <div class="number">01</div>
+   <h3>Marc</h3>
+   <p>Étudier l'effet du signalement « Pas intéressé ».</p>
+  </div>
+  <div class="card">
+   <div class="number">02</div>
+   <h3>Juliette</h3>
+   <p>Étudier l'effet du visionnage sans interaction directe.</p>
+  </div>
+  <div class="card">
+   <div class="number">03</div>
+   <h3>Tristan</h3>
+   <p>Étudier l'effet du like sur les recommandations.</p>
+  </div>
+ </div>
+</section>
+
+<!-- THEORIE -->
+
+<section class="dark" id="theorie">
+ <div class="section-label">I — COMPRENDRE MATHÉMATIQUEMENT</div>
+ <h2>La personnalisation du fil « Pour toi »</h2>
+
+ <h3>A. La rencontre entre le profil de l'utilisateur et les caractéristiques des vidéos</h3>
+
+ <p>
+ Le texte russe explique que TikTok peut associer des catégories
+ aux vidéos et construire progressivement un profil d'intérêts
+ pour chaque utilisateur.
+ </p>
+
+ <p>
+ Une vidéo peut être associée à plusieurs thèmes : politique,
+ mobilisation, humour, actualité, musique ou divertissement.
+ De son côté, un utilisateur possède un profil composé de
+ plusieurs centres d'intérêt, qui évoluent en fonction de ses comportements.
+ </p>
+
+ <p>
+ Cette idée rejoint le modèle de <strong>factorisation matricielle</strong>
+ présenté dans le texte anglais.
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   R=\begin{pmatrix}
+   r_{11}&r_{12}&\cdots&r_{1n}\\
+   r_{21}&r_{22}&\cdots&r_{2n}\\
+   \vdots&\vdots&\ddots&\vdots\\
+   r_{m1}&r_{m2}&\cdots&r_{mn}
+   \end{pmatrix}
+   \]
+  </div>
+  <p>Matrice des interactions entre utilisateurs et vidéos</p>
+ </div>
+
+ <div class="explain">
+  <ul>
+   <li>Chaque ligne représente un utilisateur.</li>
+   <li>Chaque colonne représente une vidéo.</li>
+   <li>Chaque valeur représente une interaction observée ou estimée.</li>
+  </ul>
+ </div>
+
+ <p>
+ Le problème est que toutes les vidéos ne sont pas regardées
+ par tous les utilisateurs. La matrice contient donc de nombreuses cases inconnues.
+ </p>
+
+ <p>Le texte anglais propose de décomposer cette matrice en deux ensembles de vecteurs :</p>
+
+ <div class="formula">
+  <div class="math">\[R\approx PQ^T\]</div>
+  <p>Décomposition simplifiée de la matrice d'interactions</p>
+ </div>
+
+ <div class="explain">
+  <ul>
+   <li>\(p_u\) représente le profil mathématique de l'utilisateur \(u\).</li>
+   <li>\(q_i\) représente les caractéristiques mathématiques de la vidéo \(i\).</li>
+  </ul>
+ </div>
+
+ <p>L'intérêt potentiel d'une vidéo pour un utilisateur est estimé par le produit scalaire :</p>
+
+ <div class="formula">
+  <div class="math">\[\hat r_{ui}=q_i^Tp_u\]</div>
+  <p>Score prévisionnel d'intérêt pour une vidéo</p>
+ </div>
+
+ <p>
+ Plus les caractéristiques d'une vidéo correspondent aux intérêts
+ estimés d'un utilisateur, plus son score prévisionnel peut être élevé.
+ </p>
+
+ <div class="note">
+  <strong>Application à l'enquête :</strong><br><br>
+  Un utilisateur qui regarde plusieurs vidéos relatives aux Gilets jaunes
+  peut être associé à un profil présentant un intérêt pour la mobilisation,
+  la politique ou les manifestations. Le système pourrait alors continuer
+  à proposer des vidéos appartenant à ces catégories, même si elles ne sont
+  pas toutes des appels directs à manifester.
+  <br><br>
+  Cela permet de comprendre pourquoi le thème général peut persister
+  alors que la nature des vidéos change.
+ </div>
+
+ <h3>B. L'algorithme apprend à partir des interactions</h3>
+
+ <p>Le texte russe distingue plusieurs comportements :</p>
+
+ <div class="cards">
+  <div class="card"><h3>❤️ Like</h3><p>Aimer une vidéo.</p></div>
+  <div class="card"><h3>🚫 Désintérêt</h3><p>Signaler une vidéo comme non intéressante.</p></div>
+  <div class="card"><h3>▶️ Visionnage</h3><p>Regarder une vidéo jusqu'à la fin.</p></div>
+  <div class="card"><h3>⏭️ Passage</h3><p>Passer rapidement à la suivante.</p></div>
+ </div>
+
+ <p style="margin-top:30px">
+ Le texte anglais permet de formaliser ces comportements avec un score d'engagement :
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   E(u,v)=w_1L(u,v)+w_2C(u,v)+w_3S(u,v)+w_4P_c(u,v)
+   \]
+  </div>
+  <p>Modèle conceptuel du score d'engagement</p>
+ </div>
+
+ <div class="explain">
+  <ul>
+   <li>\(L\) représente les likes.</li>
+   <li>\(C\) représente les commentaires.</li>
+   <li>\(S\) représente les partages.</li>
+   <li>\(P_c\) représente le taux de visionnage complet.</li>
+   <li>\(w_1,w_2,w_3,w_4\) représentent les poids attribués à ces interactions.</li>
+  </ul>
+ </div>
+
+ <p>Le taux de visionnage complet est défini par :</p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P_c=\frac{\text{durée de visionnage}}
+   {\text{durée totale de la vidéo}}
+   \]
+  </div>
+ </div>
+
+ <p>Par exemple, pour une vidéo de 60 secondes regardée pendant 45 secondes :</p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P_c=\frac{45}{60}=0,75=75\%
+   \]
+  </div>
+  <p>Exemple d'un visionnage à 75 %</p>
+ </div>
+
+ <div class="note">
+  <strong>Application à Juliette :</strong><br><br>
+  Même sans aimer les vidéos, son visionnage peut constituer
+  une information comportementale. Le fait de ne pas cliquer
+  sur « J'aime » ne signifie donc pas nécessairement que
+  l'algorithme ne reçoit aucun signal.
+  <br><br>
+  Attention : le relevé indique les durées de visionnage,
+  mais ne donne pas accès aux poids internes utilisés par TikTok.
+ </div>
+</section>
+
+<!-- INDICATEURS -->
+
+<section>
+ <div class="section-label">INDICATEURS STATISTIQUES</div>
+ <h2>Comment comparer les résultats ?</h2>
+
+ <p>Deux indicateurs permettent de distinguer les appels directs et la présence générale du thème.</p>
+
+ <div class="formula">
+  <div class="math">\[P_D=\frac{D}{N}\times100\]</div>
+  <p>Proportion d'appels directs à la mobilisation</p>
+ </div>
+
+ <div class="formula">
+  <div class="math">\[P_T=\frac{D+R}{N}\times100\]</div>
+  <p>Proportion de contenus liés à la mobilisation</p>
+ </div>
+
+ <div class="explain">
+  <ul>
+   <li>\(D\) : nombre d'appels directs.</li>
+   <li>\(R\) : nombre de contenus liés au thème sans appel direct.</li>
+   <li>\(N\) : nombre total de vidéos observées.</li>
+  </ul>
+ </div>
+
+ <p>
+ Cette distinction est fondamentale : une vidéo journalistique
+ sur une manifestation n'est pas un appel à manifester, mais
+ elle reste liée au sujet étudié.
+ </p>
+</section>
+
+<!-- MARC -->
+
+<section class="dark" id="marc">
+ <div class="section-label">II.A — PREMIÈRE EXPÉRIENCE</div>
+ <div class="person-title">
+  <div class="avatar">M</div>
+  <div><h2 style="margin:0">Marc</h2><p>Effet du signalement « Pas intéressé »</p></div>
+ </div>
+
+ <p>
+ Le compte de Marc a été utilisé pour observer l'effet du signalement
+ de désintérêt.
+ </p>
+
+ <p>
+ Dans le relevé du 17 octobre, 30 vidéos ont été observées.
+ Aucun appel direct à la mobilisation n'a été clairement identifié.
+ </p>
+
+ <div class="formula">
+  <div class="math">\[N=30,\qquad D=0\]</div>
+  <div class="math">\[P_D=\frac{0}{30}\times100=0\%\]</div>
+ </div>
+
+ <div class="result">
+  <div class="big">0 %</div>
+  <strong>Appels directs à la mobilisation</strong>
+  <p>Dans les 30 vidéos du relevé du 17 octobre.</p>
+ </div>
+
+ <h3>Les contenus du relevé du 18 octobre</h3>
+
+ <p>
+ Le relevé montre deux vidéos de Brut portant sur des manifestations,
+ ainsi qu'un contenu de 20 Minutes relatif aux Gilets jaunes,
+ à la position 23.
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P_T=\frac{3}{30}\times100=10\%
+   \]
+  </div>
+ </div>
+
+ <div class="result">
+  <div class="big blue">10 %</div>
+  <strong>Contenus liés au thème</strong>
+  <p>Trois contenus sur 30, sans les considérer comme des appels directs.</p>
+ </div>
+
+ <h3>Interprétation mathématique et théorique</h3>
+
+ <p>
+ Le texte anglais présente un système de recommandation qui ajuste
+ les paramètres de son modèle à partir des retours des utilisateurs :
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   \theta_{t+1}=\theta_t+\alpha\nabla_\theta E(u,v)
+   \]
+  </div>
+ </div>
+
+ <div class="explain">
+  <ul>
+   <li>\(\theta_t\) représente les paramètres du modèle à un instant donné.</li>
+   <li>\(\alpha\) représente le taux d'apprentissage.</li>
+   <li>\(\nabla_\theta E(u,v)\) représente la variation du score d'engagement par rapport aux paramètres.</li>
+  </ul>
+ </div>
+
+ <p>
+ Cette équation représente l'idée d'une adaptation progressive
+ du système aux comportements.
+ </p>
+
+ <p>
+ Le texte russe ajoute une nuance : les contenus sont classés selon
+ des catégories qui peuvent être liées entre elles. Ainsi, un
+ signalement de désintérêt concernant une vidéo précise ne signifie
+ pas nécessairement que toutes les vidéos associées au même thème
+ seront supprimées.
+ </p>
+
+ <div class="note">
+  <strong>Conclusion pour Marc :</strong><br><br>
+  Les résultats sont compatibles avec une diminution des appels directs
+  après le signalement « Pas intéressé », mais ils ne démontrent pas
+  une disparition durable du thème de la mobilisation.
+ </div>
+</section>
+
+<!-- JULIETTE -->
+
+<section id="juliette">
+ <div class="section-label">II.B — DEUXIÈME EXPÉRIENCE</div>
+
+ <div class="person-title">
+  <div class="avatar">J</div>
+  <div><h2 style="margin:0">Juliette</h2><p>Effet du visionnage passif</p></div>
+ </div>
+
+ <p>
+ Juliette a visionné les cinq vidéos de référence sans effectuer
+ de like ni de signalement particulier.
+ </p>
+
+ <p>
+ Après cette séquence, 30 recommandations ont été relevées.
+ Aucun appel direct à la mobilisation n'a été clairement identifié.
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   N=30,\qquad D=0
+   \]
+   \[
+   P_D=\frac{0}{30}\times100=0\%
+   \]
+  </div>
+ </div>
+
+ <div class="result">
+  <div class="big">0 %</div>
+  <strong>Appels directs à la mobilisation</strong>
+  <p>Dans les recommandations observées après le visionnage.</p>
+ </div>
+
+ <h3>Le rôle du visionnage</h3>
+
+ <p>
+ Le texte anglais apporte un élément essentiel : le taux de visionnage
+ complet constitue un indicateur possible de l'intérêt d'un utilisateur.
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P_c=\frac{t_v}{t_{\text{vidéo}}}
+   \]
+  </div>
+ </div>
+
+ <p>
+ Ainsi, regarder une vidéo sans l'aimer peut tout de même produire
+ un signal comportemental.
+ </p>
+
+ <p>
+ Le texte russe va dans le même sens en expliquant que la durée
+ de visionnage, la fréquence des sessions et la rapidité du passage
+ d'une vidéo à l'autre peuvent contribuer à la construction du profil utilisateur.
+ </p>
+
+ <div class="note">
+  <strong>Interprétation :</strong><br><br>
+  Le comportement passif n'est donc pas nécessairement neutre.
+  L'absence de like ne signifie pas l'absence de données comportementales.
+ </div>
+
+ <p>
+ Cependant, le relevé initial de Juliette ne contient que six vidéos
+ aléatoires, contre 30 recommandations après le visionnage des vidéos
+ de référence. Il est donc impossible de calculer une variation fiable
+ entre les deux périodes.
+ </p>
+
+ <div class="note">
+  <strong>Conclusion pour Juliette :</strong><br><br>
+  L'expérience montre qu'aucun appel direct n'a été repéré après
+  le visionnage passif. Elle ne permet toutefois pas de déterminer
+  si le visionnage a augmenté, diminué ou laissé inchangée la probabilité
+  de recevoir des contenus liés à la mobilisation.
+ </div>
+</section>
+
+<!-- TRISTAN -->
+
+<section class="dark" id="tristan">
+ <div class="section-label">II.C — TROISIÈME EXPÉRIENCE</div>
+
+ <div class="person-title">
+  <div class="avatar">T</div>
+  <div><h2 style="margin:0">Tristan</h2><p>Effet du like</p></div>
+ </div>
+
+ <p>
+ Tristan a aimé les cinq vidéos de référence.
+ Avant cette interaction, son fil de référence contenait
+ quatre appels directs à la mobilisation sur 30 vidéos.
+ </p>
+
+ <h3>Avant les likes</h3>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P_{D,\text{avant}}=\frac{4}{30}\times100
+   \]
+   \[
+   P_{D,\text{avant}}\approx13,33\%
+   \]
+  </div>
+ </div>
+
+ <div class="result">
+  <div class="big">13,33 %</div>
+  <strong>Appels directs avant les interactions</strong>
+ </div>
+
+ <h3>Après les likes</h3>
+
+ <p>Quatre contenus liés à la mobilisation sont identifiés :</p>
+
+ <table>
+  <tr><th>Position</th><th>Contenu identifié</th></tr>
+  <tr><td>8</td><td>Consigne en vue du 17 octobre</td></tr>
+  <tr><td>10</td><td>Appel à manifester</td></tr>
+  <tr><td>12</td><td>Rappel</td></tr>
+  <tr><td>19</td><td>Appel lié à la mobilisation</td></tr>
+ </table>
+
+ <p>
+ Avec une définition stricte des appels directs, seuls les contenus
+ des positions 10 et 19 sont comptabilisés.
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P_{D,\text{après}}=\frac{2}{30}\times100
+   \]
+   \[
+   P_{D,\text{après}}\approx6,67\%
+   \]
+  </div>
+ </div>
+
+ <div class="result">
+  <div class="big">6,67 %</div>
+  <strong>Appels directs après les likes</strong>
+ </div>
+
+ <h3>Comparaison des deux indicateurs</h3>
+
+ <p>
+ Si l'on considère les quatre contenus comme liés à la mobilisation :
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P_{T,\text{après}}=\frac{4}{30}\times100
+   \]
+   \[
+   P_{T,\text{après}}\approx13,33\%
+   \]
+  </div>
+ </div>
+
+ <div class="cards">
+  <div class="card">
+   <div class="number">13,33 %</div>
+   <h3>Avant</h3>
+   <p>Proportion d'appels directs.</p>
+  </div>
+  <div class="card">
+   <div class="number">6,67 %</div>
+   <h3>Après</h3>
+   <p>Proportion d'appels directs.</p>
+  </div>
+  <div class="card">
+   <div class="number" style="color:var(--blue)">13,33 %</div>
+   <h3>Thème général</h3>
+   <p>Proportion de contenus liés après les likes.</p>
+  </div>
+ </div>
+
+ <h3>Calcul de la variation</h3>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   \Delta P_D=6,67-13,33
+   \]
+   \[
+   \boxed{\Delta P_D\approx-6,66\text{ points}}
+   \]
+  </div>
+ </div>
+
+ <p>
+ Cela correspond à une baisse relative de 50 % des appels directs
+ dans les échantillons comparés.
+ </p>
+
+ <h3>Le relevé effectué 24 heures plus tard</h3>
+
+ <p>
+ Le lendemain, six contenus liés aux manifestations, à la contestation
+ ou à la mobilisation sont repérés dans le fil de Tristan,
+ aux positions 4, 6, 11, 16, 23 et 26.
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P_{T,24h}=\frac{6}{30}\times100=20\%
+   \]
+  </div>
+ </div>
+
+ <div class="result">
+  <div class="big blue">20 %</div>
+  <strong>Contenus liés au thème 24 heures plus tard</strong>
+  <p>Six vidéos sur les 30 observées.</p>
+ </div>
+
+ <h3>Interprétation mathématique et théorique</h3>
+
+ <p>
+ Le texte anglais explique qu'un système de recommandation peut
+ apprendre à partir des interactions positives et modifier ses prédictions.
+ Le like peut donc être interprété comme un signal positif dans le modèle :
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   E(u,v)=w_1L+w_2C+w_3S+w_4P_c
+   \]
+  </div>
+ </div>
+
+ <p>
+ Lorsque \(L\) augmente, le score d'engagement peut augmenter,
+ toutes choses égales par ailleurs.
+ </p>
+
+ <p>
+ Le modèle de factorisation matricielle permet alors de comprendre
+ comment des vidéos présentant des caractéristiques proches pourraient
+ obtenir un score de recommandation plus élevé.
+ </p>
+
+ <div class="note">
+  <strong>Conclusion pour Tristan :</strong><br><br>
+  Les données suggèrent une persistance de la thématique après les likes,
+  mais elles ne démontrent pas que les likes augmentent systématiquement
+  le nombre d'appels directs à la mobilisation.
+ </div>
+</section>
+
+<!-- GRAPHIQUES -->
+
+<section>
+ <div class="section-label">III — VISUALISATION DES RÉSULTATS</div>
+ <h2>Que montrent les données ?</h2>
+
+ <p>
+ Les graphiques suivants permettent de visualiser les proportions
+ calculées à partir des relevés fournis.
+ </p>
+
+ <div class="chart-box">
+  <h3>Tristan : évolution des appels directs</h3>
+  <canvas id="chartDirect"></canvas>
+ </div>
+
+ <div class="chart-box">
+  <h3>Tristan : contenus liés à la mobilisation</h3>
+  <canvas id="chartTheme"></canvas>
+ </div>
+
+ <div class="chart-box">
+  <h3>Comparaison des appels directs observés</h3>
+  <canvas id="chartCompare"></canvas>
+  <p style="font-size:11px;margin-top:15px">
+   Les valeurs de Marc et Juliette correspondent à leurs relevés
+   après interaction. Les échantillons ne constituent pas des
+   conditions expérimentales parfaitement comparables.
+  </p>
+ </div>
+</section>
+
+
+<!-- III. PERSISTANCE DU THEME -->
+
+<section class="dark" id="persistance">
+ <div class="section-label">III — COMPRENDRE LA PERSISTANCE DES THÈMES</div>
+ <h2>Pourquoi le thème persiste-t-il même lorsque les interactions changent ?</h2>
+
+ <p>
+ Cette question est au cœur de la complémentarité entre les deux textes théoriques.
+ Le texte russe explique que les vidéos peuvent être regroupées par catégories
+ et sous-catégories. Le texte anglais propose des modèles mathématiques capables
+ de représenter les relations entre contenus et utilisateurs.
+ </p>
+
+ <h3>A. La classification probabiliste des vidéos</h3>
+
+ <p>
+ Le texte anglais présente un modèle de classification appelé
+ <strong>Probabilistic Latent Semantic Analysis (PLSA)</strong>.
+ Son principe consiste à associer un document à plusieurs thèmes possibles,
+ avec une probabilité pour chacun.
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P(w|d)=\sum_{z\in Z}P(w|z)P(z|d)
+   \]
+  </div>
+  <p>Modèle de classification probabiliste PLSA</p>
+ </div>
+
+ <div class="explain">
+  <ul>
+   <li>\(d\) représente un document.</li>
+   <li>\(w\) représente un mot ou un élément observé.</li>
+   <li>\(z\) représente un thème latent.</li>
+   <li>\(P(z|d)\) représente la probabilité qu'un document appartienne à un thème.</li>
+   <li>\(P(w|z)\) représente la probabilité qu'un élément soit associé à ce thème.</li>
+  </ul>
+ </div>
+
+ <p>
+ Appliquée conceptuellement à l'enquête, cette formule permet de comprendre
+ pourquoi une vidéo ne se limite pas toujours à une seule catégorie.
+ </p>
+
+ <div class="cards">
+  <div class="card">
+   <div class="number">01</div>
+   <h3>Actualité</h3>
+   <p>Informations sur les événements récents.</p>
+  </div>
+  <div class="card">
+   <div class="number">02</div>
+   <h3>Politique</h3>
+   <p>Débats et prises de position politiques.</p>
+  </div>
+  <div class="card">
+   <div class="number">03</div>
+   <h3>Manifestation</h3>
+   <p>Reportages et contenus sur les rassemblements.</p>
+  </div>
+  <div class="card">
+   <div class="number">04</div>
+   <h3>Contestation sociale</h3>
+   <p>Contenus concernant les revendications sociales.</p>
+  </div>
+  <div class="card">
+   <div class="number">05</div>
+   <h3>Humour</h3>
+   <p>Parodies et vidéos humoristiques sur le sujet.</p>
+  </div>
+  <div class="card">
+   <div class="number">06</div>
+   <h3>Information</h3>
+   <p>Explications et analyses journalistiques.</p>
+  </div>
+ </div>
+
+ <p style="margin-top:25px">
+ Un utilisateur peut donc continuer à recevoir des contenus liés à la
+ mobilisation même après avoir signalé son désintérêt pour une vidéo
+ particulière.
+ </p>
+
+ <div class="note">
+  <strong>Application à l'expérience :</strong><br><br>
+  Le signalement peut être associé à une vidéo ou à un type de contenu
+  sans nécessairement annuler toutes les associations thématiques.
+  Une vidéo journalistique, une vidéo humoristique et un appel direct
+  peuvent être rattachés à un même sujet tout en restant différents.
+ </div>
+
+ <h3>B. La recommandation collaborative</h3>
+
+ <p>
+ Le texte russe présente également l'idée selon laquelle le système
+ peut s'appuyer sur les comportements d'utilisateurs ayant des profils similaires.
+ </p>
+
+ <p>
+ Le texte anglais formalise cette possibilité à travers le
+ <strong>collaborative filtering</strong>, ou filtrage collaboratif.
+ L'idée est de rapprocher des utilisateurs qui présentent des comportements
+ comparables afin d'estimer les contenus susceptibles de les intéresser.
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   \text{Similarité}(u_1,u_2)
+   \longrightarrow
+   \text{Prédiction des intérêts}
+   \]
+  </div>
+  <p>Représentation conceptuelle du filtrage collaboratif</p>
+ </div>
+
+ <div class="explain">
+  <h3>Comment comprendre ce mécanisme ?</h3>
+  <ul>
+   <li>Le système observe des comportements similaires entre plusieurs utilisateurs.</li>
+   <li>Il peut identifier des relations statistiques entre leurs préférences.</li>
+   <li>Ces relations peuvent contribuer à estimer l'intérêt pour des contenus encore inconnus d'un utilisateur.</li>
+  </ul>
+ </div>
+
+ <p>
+ Cela permet d'expliquer une situation importante dans l'enquête :
+ un utilisateur peut recevoir des vidéos liées à une mobilisation
+ même s'il n'a pas directement manifesté d'intérêt pour chacune d'entre elles.
+ </p>
+
+ <div class="note">
+  <strong>Interprétation :</strong><br><br>
+  La recommandation ne dépendrait donc pas uniquement des interactions
+  personnelles, mais pourrait également être influencée par les relations
+  statistiques entre les comportements de différents utilisateurs.
+  Il s'agit d'une explication théorique possible, et non d'un mécanisme
+  directement observé dans les relevés.
+ </div>
+</section>
+
+
+<!-- IV. CAPTATION DE L'ATTENTION -->
+
+<section id="attention">
+ <div class="section-label">IV — ATTENTION ET RECOMMANDATIONS</div>
+ <h2>Le rôle de la captation de l'attention dans les recommandations</h2>
+
+ <p>
+ Le texte russe insiste sur l'idée que la personnalisation ne sert pas
+ seulement à proposer des contenus pertinents : elle peut aussi contribuer
+ à maintenir l'attention de l'utilisateur.
+ </p>
+
+ <p>
+ Le texte anglais rejoint cette analyse en présentant des modèles qui
+ cherchent à maximiser l'engagement et la rétention.
+ </p>
+
+ <h3>Le score d'engagement</h3>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   E(u,v)=w_1L+w_2C+w_3S+w_4P_c
+   \]
+  </div>
+  <p>Modèle théorique du score d'engagement</p>
+ </div>
+
+ <p>
+ Cette formule montre comment plusieurs comportements peuvent être
+ regroupés dans une mesure synthétique.
+ </p>
+
+ <div class="cards">
+  <div class="card">
+   <h3>❤️ Likes</h3>
+   <p>Expression d'une appréciation positive.</p>
+  </div>
+  <div class="card">
+   <h3>💬 Commentaires</h3>
+   <p>Participation et réaction au contenu.</p>
+  </div>
+  <div class="card">
+   <h3>↗️ Partages</h3>
+   <p>Diffusion d'une vidéo à d'autres personnes.</p>
+  </div>
+  <div class="card">
+   <h3>▶️ Visionnage</h3>
+   <p>Temps consacré à la consultation d'une vidéo.</p>
+  </div>
+ </div>
+
+ <h3 style="margin-top:35px">L'importance de la durée de visionnage</h3>
+
+ <p>
+ La durée de visionnage occupe une place particulière, puisqu'elle peut
+ être représentée par :
+ </p>
+
+ <div class="formula">
+  <div class="math">
+   \[
+   P_c=\frac{t_v}{t_{\text{vidéo}}}
+   \]
+  </div>
+  <p>Proportion de la vidéo regardée</p>
+ </div>
+
+ <p>
+ Une vidéo regardée presque intégralement peut ainsi fournir un signal
+ différent d'une vidéo immédiatement ignorée.
+ </p>
+
+ <p>
+ Le texte russe ajoute que la fréquence des sessions et la durée passée
+ sur l'application peuvent également contribuer à l'analyse des comportements.
+ </p>
+
+ <div class="note">
+  <strong>Lien avec les résultats :</strong><br><br>
+  L'expérience montre que les trois utilisateurs ne reçoivent pas exactement
+  les mêmes types de contenus après leurs interactions. Les recommandations
+  restent variées, avec des vidéos de divertissement, d'actualité, de musique,
+  d'humour et de politique.
+  <br><br>
+  Cela correspond à l'idée d'un système qui combine plusieurs dimensions
+  d'intérêt plutôt que de construire un fil composé d'un seul thème.
+ </div>
+
+ <h3>Une limite importante de l'expérience</h3>
+
+ <p>
+ L'enquête ne mesure pas la durée totale passée sur TikTok,
+ la fréquence des ouvertures de l'application ni le temps pendant
+ lequel les participants restent sur le fil.
+ </p>
+
+ <p>
+ Elle ne permet donc pas de démontrer directement que les recommandations
+ observées ont augmenté leur temps d'utilisation.
+ </p>
+
+ <div class="result">
+  <strong>À retenir</strong>
+  <p>
+   L'engagement et la captation de l'attention constituent des dimensions
+   théoriques pertinentes pour comprendre la personnalisation, mais
+   elles ne sont pas directement mesurées dans cette enquête.
+  </p>
+ </div>
+</section>
+
+
+<!-- V. SYNTHESE QUANTITATIVE -->
+
+<section class="dark" id="synthese">
+ <div class="section-label">V — SYNTHÈSE QUANTITATIVE</div>
+ <h2>Comparer les résultats des trois comptes</h2>
+
+ <p>
+ Le tableau suivant rassemble les proportions calculables à partir
+ des relevés expérimentaux.
+ </p>
+
+ <div style="overflow-x:auto">
+  <table>
+   <thead>
+    <tr>
+     <th>Compte et situation</th>
+     <th>Vidéos observées</th>
+     <th>Appels directs</th>
+     <th>Proportion directe</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td><strong>Marc, 17 octobre</strong></td>
+     <td>30</td>
+     <td>0</td>
+     <td><span style="color:#36d9e8;font-weight:800">0 %</span></td>
+    </tr>
+    <tr>
+     <td><strong>Juliette, après visionnage</strong></td>
+     <td>30</td>
+     <td>0</td>
+     <td><span style="color:#36d9e8;font-weight:800">0 %</span></td>
+    </tr>
+    <tr>
+     <td><strong>Tristan, avant les likes</strong></td>
+     <td>30</td>
+     <td>4</td>
+     <td><span style="color:#ff477e;font-weight:800">13,33 %</span></td>
+    </tr>
+    <tr>
+     <td><strong>Tristan, après les likes</strong></td>
+     <td>30</td>
+     <td>2</td>
+     <td><span style="color:#9275ff;font-weight:800">6,67 %</span></td>
+    </tr>
+   </tbody>
+  </table>
+ </div>
+
+ <div class="chart-box">
+  <h3>Comparaison des appels directs</h3>
+  <canvas id="chartSynthesis"></canvas>
+ </div>
+
+ <h3 style="margin-top:35px">Les contenus liés au thème</h3>
+
+ <div class="cards">
+  <div class="card">
+   <div class="number">10 %</div>
+   <h3>Marc — 18 octobre</h3>
+   <p>Trois contenus liés aux manifestations ou aux Gilets jaunes sur 30 vidéos.</p>
+  </div>
+  <div class="card">
+   <div class="number">13,33 %</div>
+   <h3>Tristan — après les likes</h3>
+   <p>Quatre contenus liés à la mobilisation sur 30 vidéos.</p>
+  </div>
+  <div class="card">
+   <div class="number">20 %</div>
+   <h3>Tristan — 24 heures après</h3>
+   <p>Six contenus liés au thème sur 30 vidéos.</p>
+  </div>
+ </div>
+
+ <div class="note">
+  <strong>Précision sur les calculs :</strong><br><br>
+  Pour Tristan, la proportion de contenus liés au thème après les likes
+  est de 13,33 % si l'on inclut les deux consignes ou rappels en plus
+  des deux appels directs.
+  <br><br>
+  Pour le relevé effectué 24 heures plus tard, six contenus liés au thème
+  sont identifiés, soit 20 % des 30 vidéos.
+  <br><br>
+  Pour Marc, trois contenus liés aux manifestations ou aux Gilets jaunes
+  sont identifiés le 18 octobre, soit 10 % des 30 vidéos,
+  selon la classification retenue.
+ </div>
+
+ <div class="result">
+  <h3>Le constat essentiel</h3>
+  <p>
+   Ces chiffres montrent qu'il faut distinguer
+   <strong>la présence d'un thème</strong> de
+   <strong>la présence d'un appel direct</strong>.
+   Une baisse des appels directs ne signifie pas nécessairement
+   une disparition du sujet dans le fil de recommandations.
+  </p>
+ </div>
+</section>
+
+
+<script>
+// Graphique de synthèse quantitative
+
+new Chart(document.getElementById('chartSynthesis'), {
+ type:'bar',
+ data:{
+  labels:[
+   'Marc – 17 oct.',
+   'Juliette – après visionnage',
+   'Tristan – avant likes',
+   'Tristan – après likes'
+  ],
+  datasets:[{
+   label:'Proportion d’appels directs (%)',
+   data:[0,0,13.33,6.67],
+   backgroundColor:[
+    '#36d9e8',
+    '#9275ff',
+    '#ff477e',
+    '#9275ff'
+   ],
+   borderRadius:8
+  }]
+ },
+ options:{
+  responsive:true,
+  plugins:{
+   legend:{labels:{color:'#f4f5fa'}}
+  },
+  scales:{
+   y:{
+    beginAtZero:true,
+    max:20,
+    ticks:{
+     color:'#a3aabc',
+     callback:v=>v+' %'
+    },
+    grid:{color:'#303747'}
+   },
+   x:{
+    ticks:{color:'#a3aabc'},
+    grid:{display:false}
+   }
+  }
+ }
+});
+</script>
+
+
+<!-- BILAN -->
+
+<section class="conclusion" id="bilan">
+ <div class="section-label">IV — BILAN GÉNÉRAL</div>
+ <h2>Ce que révèle l'enquête</h2>
+
+ <div class="conclusion-box">
+  <h3>1. Le signalement de désintérêt</h3>
+  <p>
+   Chez Marc, aucun appel direct n'est observé dans le relevé
+   du 17 octobre. Cependant, des contenus liés au thème
+   réapparaissent dans le relevé du 18 octobre.
+  </p>
+
+  <h3>2. Le visionnage passif</h3>
+  <p>
+   Chez Juliette, aucun appel direct n'est identifié après
+   le visionnage des vidéos. Pourtant, le visionnage peut
+   constituer un signal comportemental même sans like.
+  </p>
+
+  <h3>3. Le like</h3>
+  <p>
+   Chez Tristan, les appels directs diminuent dans le relevé
+   immédiatement après les likes, tandis que la thématique
+   reste présente et atteint 20 % dans le relevé du lendemain.
+  </p>
+ </div>
+
+ <h3 style="margin-top:40px">Les limites de l'expérience</h3>
+
+ <div class="explain">
+  <ul>
+   <li>Les trois comptes ne constituent pas nécessairement des groupes expérimentaux identiques.</li>
+   <li>Les relevés portent sur des échantillons limités à 30 vidéos pour les périodes principales.</li>
+   <li>Les durées de visionnage ne permettent pas de connaître les paramètres internes de TikTok.</li>
+   <li>Les catégories de contenus peuvent être interprétées différemment selon leur classification.</li>
+   <li>Les résultats observés ne suffisent pas à démontrer une causalité certaine.</li>
+  </ul>
+ </div>
+
+ <h3 style="margin-top:35px">Conclusion finale</h3>
+
+ <p>
+ Cette enquête permet d'étudier le lien entre les comportements
+ des utilisateurs et les contenus qui leur sont recommandés.
+ En croisant les observations réalisées sur les trois comptes
+ avec les apports théoriques et mathématiques, il devient possible
+ de construire une explication du fonctionnement de la personnalisation.
+ </p>
+
+ <p>
+ La comparaison des interactions montre que les appels directs
+ et les contenus liés à un même thème ne suivent pas nécessairement
+ la même évolution. Une recommandation peut changer de forme
+ sans que le sujet général disparaisse du fil.
+ </p>
+
+ <p>
+ Les résultats soulignent également que les interactions ne se
+ limitent pas aux likes : le visionnage et les signaux de désintérêt
+ peuvent aussi être pertinents dans la compréhension d'un système
+ de recommandation.
+ </p>
+
+ <p>
+ <strong>
+ L'enjeu est donc de comprendre dans quelle mesure nos interactions
+ contribuent à façonner notre environnement numérique, et comment
+ les algorithmes peuvent entretenir la présence de certains thèmes
+ dans notre fil « Pour toi ».
+ </strong>
+ </p>
+
+ <div class="note">
+  <strong>Précaution scientifique :</strong><br><br>
+  Les modèles mathématiques présentés sont des représentations
+  théoriques plausibles des systèmes de recommandation. Ils ne
+  constituent pas une preuve que TikTok utilise exactement ces
+  formules dans son algorithme propriétaire.
+ </div>
+</section>
+
+<footer>
+ TIK●ALGO — ENQUÊTE SUR LES ALGORITHMES DE RECOMMANDATION
+ <br>Projet d'analyse • 2026
+</footer>
+
+<script>
+const common = {
+ responsive:true,
+ plugins:{
+  legend:{labels:{color:'#f4f5fa'}},
+ },
+ scales:{
+  y:{
+   beginAtZero:true,
+   max:25,
+   ticks:{color:'#a3aabc',callback:v=>v+' %'},
+   grid:{color:'#303747'}
+  },
+  x:{
+   ticks:{color:'#a3aabc'},
+   grid:{color:'#303747'}
+  }
+ }
+};
+
+new Chart(document.getElementById('chartDirect'),{
+ type:'bar',
+ data:{
+  labels:['Avant les likes','Après les likes'],
+  datasets:[{
+   label:'Appels directs',
+   data:[13.33,6.67],
+   backgroundColor:['#9275ff','#ff477e'],
+   borderRadius:8
+  }]
+ },
+ options:common
+});
+
+new Chart(document.getElementById('chartTheme'),{
+ type:'bar',
+ data:{
+  labels:['Après les likes','24 heures après'],
+  datasets:[{
+   label:'Contenus liés à la mobilisation',
+   data:[13.33,20],
+   backgroundColor:['#36d9e8','#9275ff'],
+   borderRadius:8
+  }]
+ },
+ options:common
+});
+
+new Chart(document.getElementById('chartCompare'),{
+ type:'bar',
+ data:{
+  labels:['Marc','Juliette','Tristan après'],
+  datasets:[{
+   label:'Appels directs (%)',
+   data:[0,0,6.67],
+   backgroundColor:['#36d9e8','#9275ff','#ff477e'],
+   borderRadius:8
+  }]
+ },
+ options:common
+});
+</script>
+
+</body>
+</html>

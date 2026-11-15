@@ -1,0 +1,118 @@
+
+/* STYLE GÉNÉRAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background-color: #f4f2ed;
+    color: #263445;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* CONTENEUR PRINCIPAL */
+.page {
+    max-width: 850px;
+    width: 100%;
+    background-color: white;
+    padding: 65px 55px;
+    text-align: center;
+    border-top: 6px solid #263445;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* SOUS-TITRE */
+.sous-titre {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 13px;
+    color: #a18455;
+    margin-bottom: 20px;
+}
+
+/* TITRE */
+h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+
+/* LIGNE DÉCORATIVE */
+.ligne {
+    width: 70px;
+    height: 2px;
+    background-color: #a18455;
+    margin: 25px auto 40px;
+}
+
+/* GRILLE DES MEMBRES */
+.equipe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 45px;
+}
+
+/* CARTE DE CHAQUE MEMBRE */
+.membre {
+    padding: 20px 10px;
+    border-bottom: 1px solid #dedbd3;
+}
+
+.membre h2 {
+    font-size: 19px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.membre p {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #a18455;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* DIRECTION DU PROJET */
+.direction {
+    margin-top: 20px;
+    padding: 25px;
+    background-color: #f4f2ed;
+}
+
+.direction p {
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* INFORMATIONS SUR LE COURS */
+.cours {
+    margin-top: 40px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #777;
+}
+
+/* VERSION MOBILE */
+@media (max-width: 600px) {
+    .page {
+        padding: 40px 20px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    .equipe {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}

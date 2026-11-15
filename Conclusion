@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pas intéressé</title>
+    <link rel="stylesheet" href="L'enquête.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="brand">
+            <h1>Pas intéressé :</h1>
+            <p>qui contrôle vraiment le fil ?</p>
+        </div>
+
+        <nav class="navigation">
+            <a href="Accueil.html" class="nav-link active">Accueil</a>
+            <a href="#contexte" class="nav-link">Le contexte</a>
+            <a href="L'enquête.html" class="nav-link">L'enquête</a>
+            <a href="Résultats.html" class="nav-link">Les résultats</a>
+            <a href="Résultats.html" class="nav-link">Conclusion</a>
+            <a href="#ressources" class="nav-link">Ressources</a>
+        </nav>
+
+        <a href="#apropos" class="about">
+            <span class="info-icon">i</span>
+            <span>À propos</span>
+        </a>
+        <link rel="stylesheet" href="L'enquête.css">
+    </header>
+    <main class="conclusion">
+
+    <h1>Notre conclusion</h1>
+
+    <!-- PARTIE 1 -->
+    <details class="menu-conclusion">
+        <summary>1. La validation de nos hypothèses</summary>
+
+        <p>
+            Il convient ainsi, au terme de nos résultats, de faire le bilan
+            de nos hypothèses et de déterminer si elles sont vérifiées ou non.
+        </p>
+
+        <p>
+            <strong>Notre première hypothèse n'est pas vérifiée :</strong>
+            l'utilisation de la fonction « Pas intéressé » ne réduit pas
+            la proportion de vidéos relayant directement l'appel du
+            17 octobre par rapport au groupe qui les regarde sans interaction.
+        </p>
+
+        <p>
+            <strong>Notre deuxième hypothèse est totalement vérifiée :</strong>
+            la présence de likes nous fait voir une proportion de contenus
+            relatifs au 17 octobre beaucoup plus importante, quelle que soit
+            la catégorie de référence.
+        </p>
+
+        <p>
+            <strong>Notre troisième hypothèse est également confirmée :</strong>
+            lorsque le signal de désintérêt est utilisé, certains contenus
+            peuvent continuer à apparaître, notamment lorsqu'ils proviennent
+            d'autres comptes ou abordent le même événement sous un angle
+            différent.
+        </p>
+
+        <p>
+            Certains contenus continuent également d'apparaître lorsque le
+            signal d'intérêt est utilisé, y compris à plus long terme.
+            Lors du premier relevé, « Pas intéressé » est utilisé sur les
+            contenus relatifs au 17 octobre. Au deuxième relevé, davantage
+            de contenus relatifs au 17 octobre apparaissent, puis quelques-uns
+            sont encore présents lors du troisième relevé.
+        </p>
+
+    </details>
+
+
+    <!-- PARTIE 2 -->
+    <details class="menu-conclusion">
+        <summary>2. Nos conclusions générales</summary>
+
+        <p>
+            Lorsqu'un utilisateur manifeste un intérêt pour un contenu,
+            les recommandations semblent s'orienter en fonction de cet
+            intérêt. Cela accrédite deux idées : d'une part, la possibilité
+            de la formation d'une bulle de filtres ; d'autre part, le fait
+            que les événements relatifs au 17 octobre peuvent être présentés
+            différemment d'un utilisateur à un autre.
+        </p>
+
+        <p>
+            De plus, il est à noter qu'à partir de trois comptes vierges,
+            sans prédisposition particulière si ce n'est un pseudonyme,
+            une date de naissance, une adresse mail et un âge, nous avons
+            pourtant observé des contenus relatifs au blocage très différents
+            d'un compte à l'autre.
+        </p>
+
+        <p>
+            Cela montre que l'utilisateur n'a pas entièrement la main sur
+            l'algorithme et que l'application utilise différentes données
+            pour construire les recommandations. Même avec trois comptes
+            similaires au départ, les contenus proposés varient beaucoup.
+        </p>
+
+        <p>
+            <strong>Une première grande conclusion :</strong>
+            l'application, à partir des informations qu'elle recueille,
+            arrive à proposer des contenus très différents à des utilisateurs
+            dont les comptes semblent pourtant similaires. Cela peut être
+            mis en lien avec l'article étudié sur la collecte et l'utilisation
+            des données personnelles.
+        </p>
+
+        <p>
+            <strong>Une deuxième grande conclusion :</strong>
+            nos interactions influencent également la manière dont un
+            événement est présenté. Par exemple, chez Marc, le fait d'utiliser
+            « Pas intéressé » sur des contenus relatifs à la mobilisation
+            semble laisser davantage de place à des contenus informatifs
+            et bruts. Chez Tristan, les likes accordés à des appels à
+            manifester ou à des contenus humoristiques orientent davantage
+            les recommandations vers ces types de vidéos.
+        </p>
+
+        <p>
+            Ainsi, le like ne joue pas uniquement sur la quantité de contenus
+            proposés : selon le type de vidéos avec lequel l'utilisateur
+            interagit, il peut aussi influencer qualitativement le prisme
+            par lequel les manifestations du 17 octobre sont présentées
+            et interprétées.
+        </p>
+
+    </details>
+
+
+    <!-- PARTIE 3 -->
+    <details class="menu-conclusion">
+        <summary>3. Comment l'utilisateur peut-il agencer son fil ?</summary>
+
+        <p>
+            Notre expérience montre qu'aucune action ne permet à elle seule
+            de contrôler totalement les recommandations. L'utilisateur peut
+            influencer son fil en likant certains contenus ou en signalant
+            son désintérêt, mais l'algorithme conserve une place importante
+            dans la sélection des vidéos proposées.
+        </p>
+
+        <p>
+            Nous avons ainsi davantage d'influence sur notre fil en
+            interagissant avec les vidéos qu'en utilisant uniquement la
+            fonction « Pas intéressé ». Cependant, cette influence reste
+            partielle : l'utilisateur ne maîtrise pas entièrement les
+            recommandations qui lui sont proposées.
+        </p>
+
+        <p>
+            Cela implique également que les personnes qui publient beaucoup
+            de contenus peuvent contribuer à orienter les recommandations
+            et, par conséquent, l'influence que ces contenus peuvent avoir
+            sur les utilisateurs.
+        </p>
+
+    </details>
+
+
+    <!-- PARTIE 4 -->
+    <details class="menu-conclusion">
+        <summary>4. Comment les algorithmes nous font-ils percevoir le réel ?</summary>
+
+        <p>
+            Notre expérience montre que les algorithmes ne proposent pas
+            nécessairement la même représentation d'un événement à tous
+            les utilisateurs. En sélectionnant et en mettant en avant
+            certains contenus plutôt que d'autres, ils peuvent contribuer
+            à orienter notre perception de l'actualité.
+        </p>
+
+        <p>
+            Deux utilisateurs peuvent ainsi suivre un même événement,
+            mais en découvrir des aspects différents selon les contenus
+            qui leur sont recommandés et les interactions qu'ils ont
+            précédemment réalisées.
+        </p>
+
+        <p>
+            Il faut néanmoins prendre en compte plusieurs limites à notre
+            expérience.
+        </p>
+
+        <p>
+            <strong>Première limite :</strong> même en créant des comptes
+            vierges, le fil peut être biaisé dès le départ. Nous ne pouvons
+            donc pas garantir que les recommandations initiales sont
+            totalement neutres.
+        </p>
+
+        <p>
+            <strong>Deuxième limite :</strong> certains relevés ne présentent
+            pas exactement les mêmes contenus. Par exemple, 17 contenus
+            ont été publiés un jour, contre davantage le lendemain.
+            Ce décalage temporel constitue donc un biais, puisque les
+            recommandations peuvent évoluer avec les nouvelles publications.
+        </p>
+
+        <p>
+            <strong>Autre limite :</strong> certaines manipulations nous
+            obligent à avoir un lien avec la vidéo. Par exemple, le temps
+            nécessaire pour sélectionner la fonction « Pas intéressé »
+            peut être interprété par l'algorithme comme une forme d'intérêt
+            pour le contenu.
+        </p>
+
+        <p class="phrase-finale">
+            Finalement, notre expérience montre que nous pouvons influencer
+            une partie de notre fil, mais que nous n'en contrôlons jamais
+            totalement la composition. Les algorithmes participent ainsi
+            à construire la manière dont nous découvrons et percevons
+            le réel.
+        </p>
+
+    </details>
+    </main>
+
+</body>
+</html>

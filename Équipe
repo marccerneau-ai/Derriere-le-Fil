@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pas intéressé</title>
+    <link rel="stylesheet" href="L'enquête.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="brand">
+            <h1>Like ou désintérêt :</h1>
+            <p>qui décide de ton fil ?</p>
+        </div>
+
+        <nav class="navigation">
+            <a href="Accueil.html" class="nav-link">Accueil</a>
+            <a href="Contexte.html" class="nav-link">Le contexte</a>
+            <a href="L'enquête.html" class="nav-link active">L'enquête</a>
+            <a href="Résultats.html" class="nav-link">Les résultats</a>
+            <a href="Conclusion.html" class="nav-link">Conclusion</a>
+            <a href="Ressources.html" class="nav-link">Ressources</a>
+        </nav>
+
+        <a href="#apropos" class="about">
+            <span class="info-icon">i</span>
+            <span>À propos</span>
+        </a>
+        <link rel="stylesheet" href="L'enquête.css">
+    </header>
+
+    
+<main class="enquete">
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre équipe - Culture Numérique</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            background-color: #f4f2ed;
+            color: #263445;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .page {
+            max-width: 850px;
+            width: 100%;
+            background-color: white;
+            padding: 65px 55px;
+            text-align: center;
+            border-top: 6px solid #263445;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .sous-titre {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 13px;
+            color: #a18455;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        .ligne {
+            width: 70px;
+            height: 2px;
+            background-color: #a18455;
+            margin: 25px auto 40px;
+        }
+
+        .equipe {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 45px;
+        }
+
+        .membre {
+            padding: 20px 10px;
+            border-bottom: 1px solid #dedbd3;
+        }
+
+        .membre h2 {
+            font-size: 19px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .membre p {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            color: #a18455;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .direction {
+            margin-top: 20px;
+            padding: 25px;
+            background-color: #f4f2ed;
+        }
+
+        .direction p {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .cours {
+            margin-top: 40px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #777;
+        }
+
+        @media (max-width: 600px) {
+            .page {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 29px;
+            }
+
+            .equipe {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="page">
+
+        <p class="sous-titre">Sciences Po Paris</p>
+
+        <h1>Notre équipe</h1>
+
+        <div class="ligne"></div>
+
+        <section class="equipe">
+
+            <div class="membre">
+                <h2>Madame Juliette PIETRI</h2>
+                <p>Enquêtrice · Rédactrice</p>
+            </div>
+
+            <div class="membre">
+                <h2>Madame Cheima BAHRI</h2>
+                <p>Enquêtrice · Rédactrice</p>
+            </div>
+
+            <div class="membre">
+                <h2>Monsieur Tristan VIDAL DA SILVA</h2>
+                <p>Enquêteur · Rédacteur</p>
+            </div>
+
+            <div class="membre">
+                <h2>Monsieur Marc CERNEAU</h2>
+                <p>Enquêteur · Développeur Web</p>
+            </div>
+
+        </section>
+
+        <div class="direction">
+            <p><strong>Sous la direction de</strong></p>
+            <p>Monsieur Wilfried COUSSIEU</p>
+        </div>
+
+        <div class="cours">
+            Dans le cadre du cours de Culture Numérique<br>
+            <strong>2e année Sciences Po – Paris</strong>
+        </div>
+
+    </main>
+
+</body>
+</html>

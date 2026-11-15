@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Étude pédagogique de l'influence des interactions TikTok sur la recommandation de vidéos liées à la mobilisation du 17 octobre 2026.">
+<title>TikTok — Interactions et recommandations</title>
+<style>
+:root {
+  --bg: #0b1020;
+  --panel: #151d32;
+  --panel2: #1b2740;
+  --text: #edf2ff;
+  --muted: #aab6ce;
+  --accent: #70d6c1;
+  --blue: #83aaff;
+  --pink: #ff91b5;
+  --yellow: #f6d477;
+  --border: #2c3955;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+header {
+  padding: 76px 22px 60px;
+  background: radial-gradient(ellipse at top right, #263c68, transparent 55%),
+              linear-gradient(135deg, #101a31, #0b1020);
+  border-bottom: 1px solid var(--border);
+}
+.container { max-width: 1100px; margin: auto; }
+.eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .78rem;
+  font-weight: 700;
+}
+h1 {
+  font-size: clamp(2.2rem, 6vw, 4.3rem);
+  line-height: 1.08;
+  max-width: 850px;
+  margin: 16px 0;
+}
+h2 { font-size: 1.8rem; margin-top: 0; }
+h3 { margin-top: 0; }
+p { color: var(--muted); }
+.lead { font-size: 1.15rem; max-width: 780px; }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: .9rem;
+}
+nav a:hover { border-color: var(--accent); color: var(--accent); }
+main { padding: 42px 22px 80px; }
+section { margin: 0 0 64px; scroll-margin-top: 20px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 17px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: 23px;
+}
+.card p:last-child { margin-bottom: 0; }
+.tag {
+  display: inline-block;
+  font-size: .78rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.negative { color: #ffb0c6; background: #48253a; }
+.neutral { color: #c5d2ef; background: #293650; }
+.positive { color: #a5f0dc; background: #1d403d; }
+.formula {
+  background: #0a1428;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 19px;
+  border-radius: 10px;
+  overflow-x: auto;
+  color: #dce8ff;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 1rem;
+}
+.note {
+  border-left: 3px solid var(--yellow);
+  padding: 12px 17px;
+  background: #292719;
+  border-radius: 0 9px 9px 0;
+  color: #e9dfbd;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 18px 0;
+  background: var(--panel);
+  border-radius: 12px;
+  overflow: hidden;
+}
+th, td {
+  text-align: left;
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+th { color: var(--accent); background: var(--panel2); }
+td { color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+.steps { counter-reset: step; }
+.step {
+  position: relative;
+  padding: 5px 0 22px 55px;
+  border-left: 1px solid var(--border);
+  margin-left: 17px;
+}
+.step::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: -18px;
+  top: 0;
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--panel2);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  font-weight: 700;
+}
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin: 18px 0;
+}
+label { display: block; color: var(--muted); font-size: .9rem; }
+input {
+  width: 100%;
+  margin-top: 6px;
+  padding: 11px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #0a1428;
+  color: var(--text);
+  font: inherit;
+}
+button {
+  border: 0;
+  background: var(--accent);
+  color: #071b1b;
+  font-weight: 750;
+  padding: 12px 18px;
+  border-radius: 9px;
+  cursor: pointer;
+  font: inherit;
+}
+button:hover { filter: brightness(1.08); }
+.result {
+  padding: 18px;
+  margin-top: 15px;
+  background: var(--panel2);
+  border-radius: 12px;
+  color: var(--text);
+}
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 22px;
+  text-align: center;
+  color: var(--muted);
+  font-size: .88rem;
+}
+small { color: var(--muted); }
+@media (max-width: 600px) {
+  header { padding-top: 50px; }
+  th, td { padding: 10px 8px; font-size: .88rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="eyebrow">Étude des systèmes de recommandation</div>
+    <h1>TikTok : comment nos interactions influencent-elles les vidéos recommandées ?</h1>
+    <p class="lead">
+      Analyse pédagogique des effets possibles du « Pas intéressé », du like
+      et du simple visionnage sur la présence de vidéos liées à l'appel
+      à la mobilisation des Gilets jaunes du 17 octobre 2026.
+    </p>
+    <nav aria-label="Navigation principale">
+      <a href="#objectif">Problématique</a>
+      <a href="#profils">Profils</a>
+      <a href="#modele">Modèle mathématique</a>
+      <a href="#mesure">Mesure</a>
+      <a href="#limites">Limites</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<section id="objectif">
+  <h2>1. Problématique et objectif</h2>
+  <div class="card">
+    <p>
+      Les plateformes de vidéos courtes utilisent des systèmes de
+      recommandation pour sélectionner les contenus susceptibles
+      d'intéresser chaque utilisateur. Les interactions observables
+      peuvent fournir des indices sur ses préférences.
+    </p>
+    <p>
+      Cette étude cherche à comparer trois comportements :
+      signaler qu'une vidéo ne nous intéresse pas, aimer une vidéo
+      et simplement la regarder sans effectuer d'action visible.
+    </p>
+    <div class="note">
+      <strong>Question centrale :</strong> les interactions avec les vidéos
+      peuvent-elles modifier la fréquence d'apparition de contenus liés
+      à la mobilisation du 17 octobre 2026 dans le fil « Pour toi » ?
+    </div>
+  </div>
+</section>
+
+<section id="profils">
+  <h2>2. Présentation des trois profils</h2>
+  <p>
+    Les profils ci-dessous reprennent les observations communiquées.
+    Ils représentent trois types de comportements, et non trois groupes
+    expérimentaux contrôlés.
+  </p>
+
+  <div class="grid">
+    <article class="card">
+      <span class="tag negative">Signal négatif</span>
+      <h3>Marc CERNEAU</h3>
+      <p>
+        Des recherches concernant la mobilisation du 17 octobre ont été
+        effectuées. Les vidéos liées à cette mobilisation observées dans
+        le fil ont été signalées avec « Pas intéressé ».
+      </p>
+      <p><strong>Comportement étudié :</strong> rejet explicite d'un contenu.</p>
+    </article>
+
+    <article class="card">
+      <span class="tag neutral">Signal neutre</span>
+      <h3>Juliette PIETRI</h3>
+      <p>
+        Des vidéos variées ont été visionnées sans action particulière
+        dans le relevé initial.
+      </p>
+      <p><strong>Comportement étudié :</strong> visionnage sans like ni rejet.</p>
+    </article>
+
+    <article class="card">
+      <span class="tag positive">Signal positif</span>
+      <h3>Tristan VIDAL DA SILVA</h3>
+      <p>
+        Cinq vidéos de référence ont été aimées. Des observations ont ensuite
+        été réalisées immédiatement et environ 24 heures plus tard.
+      </p>
+      <p><strong>Comportement étudié :</strong> appréciation explicite d'un contenu.</p>
+    </article>
+  </div>
+</section>
+
+<section id="interactions">
+  <h2>3. Les interactions comme signaux</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Interaction</th>
+        <th>Interprétation pédagogique</th>
+        <th>Codage illustratif</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>« Pas intéressé »</td>
+        <td>Signal de désintérêt pour un contenu ou une catégorie.</td>
+        <td><span class="tag negative">-1</span></td>
+      </tr>
+      <tr>
+        <td>Visionnage simple</td>
+        <td>Exposition au contenu, sans réaction explicite enregistrée.</td>
+        <td><span class="tag neutral">0</span></td>
+      </tr>
+      <tr>
+        <td>Like</td>
+        <td>Signal explicite d'appréciation.</td>
+        <td><span class="tag positive">+1</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">
+    Ces valeurs sont un codage simplifié destiné à expliquer le raisonnement.
+    Elles ne correspondent pas aux pondérations réelles de l'algorithme TikTok,
+    qui ne sont pas publiquement connues dans leur intégralité.
+  </p>
+</section>
+
+<section id="modele">
+  <h2>4. Modélisation mathématique</h2>
+
+  <div class="card">
+    <h3>4.1. Représentation des préférences</h3>
+    <p>
+      Un système de recommandation peut représenter les utilisateurs et
+      les contenus par des vecteurs numériques. Ces vecteurs décrivent
+      des caractéristiques latentes, c'est-à-dire des propriétés apprises
+      à partir des comportements observés.
+    </p>
+    <div class="formula">
+      r̂(u,v) = qᵥᵀ pᵤ
+    </div>
+    <p>
+      <strong>pᵤ</strong> représente le vecteur associé à l'utilisateur
+      <strong>u</strong>. <strong>qᵥ</strong> représente celui de la vidéo
+      <strong>v</strong>. Leur produit scalaire donne un score estimé
+      de compatibilité.
+    </p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>4.2. Factorisation matricielle</h3>
+    <p>
+      On peut représenter les interactions sous la forme d'une matrice
+      dont les lignes correspondent aux utilisateurs et les colonnes
+      aux vidéos.
+    </p>
+    <div class="formula">
+      R ≈ P × Qᵀ
+    </div>
+    <p>
+      La matrice R contient les interactions observées ou leurs codages.
+      Les matrices P et Q représentent des facteurs latents simplifiés.
+      Cette approche permet d'illustrer comment des régularités dans
+      les interactions peuvent contribuer à estimer les préférences.
+    </p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>4.3. Durée de visionnage et complétion</h3>
+    <p>
+      Le temps passé sur une vidéo peut également constituer un signal
+      comportemental. Une mesure simple est le taux de complétion :
+    </p>
+    <div class="formula">
+      Taux de complétion = Temps visionné / Durée totale × 100
+    </div>
+    <p>
+      Un visionnage long peut être interprété différemment d'un passage
+      très rapide. Toutefois, regarder une vidéo jusqu'au bout ne signifie
+      pas nécessairement être d'accord avec son contenu.
+    </p>
+  </div>
+</section>
+
+<section id="boucle">
+  <h2>5. La boucle de rétroaction</h2>
+  <p>
+    Un système de recommandation peut fonctionner selon un cycle :
+    il propose des contenus, observe certaines réactions, puis adapte
+    potentiellement les propositions suivantes.
+  </p>
+  <div class="steps">
+    <div class="step">
+      <h3>Proposition de vidéos</h3>
+      <p>Le fil « Pour toi » affiche une sélection de contenus.</p>
+    </div>
+    <div class="step">
+      <h3>Observation des interactions</h3>
+      <p>La plateforme peut observer les likes, les rejets, les durées de visionnage et d'autres signaux.</p>
+    </div>
+    <div class="step">
+      <h3>Actualisation des estimations</h3>
+      <p>Les signaux disponibles peuvent contribuer à mettre à jour les estimations de préférences.</p>
+    </div>
+    <div class="step">
+      <h3>Nouvelles recommandations</h3>
+      <p>Les contenus proposés peuvent évoluer en fonction des estimations actualisées et d'autres critères.</p>
+    </div>
+  </div>
+  <p class="note">
+    Ce schéma décrit un principe général de personnalisation.
+    Il ne constitue pas une description exacte du fonctionnement interne
+    de TikTok.
+  </p>
+</section>
+
+<section id="mesure">
+  <h2>6. Mesurer la fréquence des vidéos liées à la mobilisation</h2>
+  <div class="card">
+    <p>
+      Pour comparer deux séquences de recommandations, on peut calculer
+      la proportion de vidéos correspondant au sujet étudié.
+    </p>
+    <div class="formula">
+      f = Nombre de vidéos liées au sujet / Nombre total de vidéos
+    </div>
+    <p>
+      La différence entre deux périodes peut ensuite être calculée :
+    </p>
+    <div class="formula">
+      Δf = f après interaction − f avant interaction
+    </div>
+    <p>
+      Une différence positive indique une proportion observée plus élevée
+      après l'interaction. Une différence négative indique une proportion
+      plus faible.
+    </p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>Calculateur de fréquence</h3>
+    <p>
+      Saisis les nombres réellement relevés dans tes observations.
+      Le calculateur ne crée pas de données : il utilise uniquement
+      les valeurs renseignées.
+    </p>
+    <div class="controls">
+      <label>
+        Vidéos liées au sujet avant
+        <input id="beforeTopic" type="number" min="0" step="1" value="0">
+      </label>
+      <label>
+        Total de vidéos avant
+        <input id="beforeTotal" type="number" min="0" step="1" value="0">
+      </label>
+      <label>
+        Vidéos liées au sujet après
+        <input id="afterTopic" type="number" min="0" step="1" value="0">
+      </label>
+      <label>
+        Total de vidéos après
+        <input id="afterTotal" type="number" min="0" step="1" value="0">
+      </label>
+    </div>
+    <button onclick="calculate()">Calculer les fréquences</button>
+    <div id="result" class="result" aria-live="polite">
+      Renseigne les quatre valeurs puis lance le calcul.
+    </div>
+  </div>
+</section>
+
+<section id="comparaison">
+  <h2>7. Comparaison des comportements</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Profil</th>
+        <th>Interaction étudiée</th>
+        <th>Hypothèse à examiner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Marc CERNEAU</td>
+        <td>« Pas intéressé »</td>
+        <td>La fréquence des vidéos similaires pourrait diminuer.</td>
+      </tr>
+      <tr>
+        <td>Juliette PIETRI</td>
+        <td>Visionnage simple</td>
+        <td>La fréquence pourrait dépendre d'autres signaux, dont la durée de visionnage.</td>
+      </tr>
+      <tr>
+        <td>Tristan VIDAL DA SILVA</td>
+        <td>Like</td>
+        <td>La fréquence des contenus similaires pourrait augmenter.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">
+    Ces propositions sont des hypothèses à tester, pas des résultats
+    démontrés par les observations communiquées.
+  </p>
+</section>
+
+<section id="limites">
+  <h2>8. Limites de l'étude</h2>
+  <div class="card">
+    <ul>
+      <li>
+        <strong>Nombre de profils limité :</strong> trois profils ne permettent
+        pas de généraliser les résultats à l'ensemble des utilisateurs.
+      </li>
+      <li>
+        <strong>Absence de contrôle expérimental :</strong> les profils peuvent
+        différer par leurs recherches, leurs historiques et leurs habitudes.
+      </li>
+      <li>
+        <strong>Facteurs multiples :</strong> les recommandations peuvent
+        dépendre de nombreux signaux autres que les trois interactions étudiées.
+      </li>
+      <li>
+        <strong>Variabilité dans le temps :</strong> les contenus disponibles
+        et les recommandations peuvent évoluer entre deux observations.
+      </li>
+      <li>
+        <strong>Algorithme non transparent :</strong> les poids exacts et
+        l'ensemble des mécanismes internes ne sont pas accessibles à partir
+        de ce seul relevé.
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="conclusion">
+  <h2>9. Conclusion</h2>
+  <div class="card">
+    <p>
+      L'étude permet de présenter trois types de signaux susceptibles
+      d'intervenir dans la personnalisation d'un fil de recommandations :
+      le rejet explicite, l'appréciation explicite et le visionnage sans
+      réaction visible.
+    </p>
+    <p>
+      La factorisation matricielle, les vecteurs latents et les taux
+      de complétion fournissent des outils mathématiques utiles pour
+      comprendre, de manière simplifiée, comment un système peut exploiter
+      les comportements observés.
+    </p>
+    <p>
+      Cependant, les observations de trois profils ne suffisent pas à
+      démontrer que telle interaction provoque à elle seule une hausse
+      ou une baisse des vidéos liées à la mobilisation du 17 octobre 2026.
+      Pour étayer cette conclusion, il faudrait disposer de relevés
+      quantifiés, répétés et comparables.
+    </p>
+    <p><strong>
+      Conclusion générale : les interactions peuvent contribuer à la
+      personnalisation des recommandations, mais leur effet précis doit
+      être mesuré et ne peut pas être déduit d'une simple observation isolée.
+    </strong></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Étude pédagogique — Recommandation algorithmique et interactions sur TikTok.
+  <br>
+  Les formules et les valeurs de codage présentées sont des modèles simplifiés.
+</footer>
+
+<script>
+function calculate() {
+  const ids = ["beforeTopic", "beforeTotal", "afterTopic", "afterTotal"];
+  const values = ids.map(id => Number(document.getElementById(id).value));
+  const [bt, btotal, at, atotal] = values;
+  const result = document.getElementById("result");
+
+  if (values.some(v => !Number.isInteger(v) || v < 0)) {
+    result.textContent = "Entre uniquement des nombres entiers positifs ou nuls.";
+    return;
+  }
+
+  if (bt > btotal || at > atotal) {
+    result.textContent = "Le nombre de vidéos liées au sujet ne peut pas dépasser le total.";
+    return;
+  }
+
+  if (btotal === 0 || atotal === 0) {
+    result.textContent = "Les deux totaux doivent être supérieurs à zéro.";
+    return;
+  }
+
+  const before = bt / btotal;
+  const after = at / atotal;
+  const delta = after - before;
+  const points = delta * 100;
+  const direction = delta > 0 ? "augmentation" :
+                    delta < 0 ? "diminution" : "aucune variation";
+
+  result.innerHTML = `
+    <strong>Résultats</strong><br>
+    Fréquence avant : ${(before * 100).toFixed(2)} %<br>
+    Fréquence après : ${(after * 100).toFixed(2)} %<br>
+    Écart : ${points > 0 ? "+" : ""}${points.toFixed(2)} points de pourcentage
+    <br><br>
+    Variation observée : <strong>${direction}</strong>.
+    <br><small>Ce résultat décrit les données saisies et ne démontre pas, à lui seul, un lien de causalité.</small>
+  `;
+}
+</script>
+
+</body>
+</html>

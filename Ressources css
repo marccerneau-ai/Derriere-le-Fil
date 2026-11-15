@@ -1,0 +1,498 @@
+
+/* =========================================
+   PAGE RESSOURCES - DESIGN COMPLET
+========================================= */
+
+/* PAGE */
+
+.page-ressources {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 35px;
+    color: #151a20;
+}
+
+/* =========================================
+   INTRODUCTION
+========================================= */
+
+.hero-ressources {
+    min-height: 350px;
+    background: #151a20;
+    border-radius: 18px;
+    padding: 55px 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 70px;
+}
+
+.hero-texte {
+    max-width: 650px;
+    position: relative;
+    z-index: 2;
+}
+
+.sur-titre {
+    color: #27d9c5;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero-ressources h1 {
+    color: white;
+    font-size: 48px;
+    text-align: left;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.hero-ressources h1 span {
+    color: #27d9c5;
+}
+
+.hero-ressources p {
+    color: #d0d9de;
+    font-size: 16px;
+    line-height: 1.9;
+    text-align: justify;
+    max-width: 620px;
+    margin-bottom: 30px;
+}
+
+.bouton-ressources {
+    display: inline-block;
+    background: #27d9c5;
+    color: #151a20;
+    padding: 14px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.bouton-ressources:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+
+/* DECORATION */
+
+.hero-decoration {
+    width: 260px;
+    height: 260px;
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 30px;
+}
+
+.cercle {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(39, 217, 197, 0.45);
+}
+
+.cercle-1 {
+    width: 250px;
+    height: 250px;
+    top: 0;
+    left: 0;
+}
+
+.cercle-2 {
+    width: 185px;
+    height: 185px;
+    top: 33px;
+    left: 33px;
+    border-style: dashed;
+}
+
+.cercle-centre {
+    position: absolute;
+    width: 125px;
+    height: 125px;
+    top: 62px;
+    left: 62px;
+    border-radius: 50%;
+    background: #27d9c5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cercle-centre span {
+    font-size: 38px;
+    font-weight: bold;
+    color: #151a20;
+}
+
+.cercle-centre small {
+    font-size: 10px;
+    font-weight: bold;
+    color: #151a20;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   PRESENTATION
+========================================= */
+
+.presentation-ressources {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin: 65px 0 85px;
+    padding: 0 15px;
+}
+
+.petit-label {
+    color: #159e91;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.presentation-ressources h2 {
+    font-size: 25px;
+    color: #151a20;
+    text-align: left;
+    line-height: 1.4;
+    margin-top: 12px;
+}
+
+.presentation-ressources > p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #59656e;
+    text-align: justify;
+}
+
+
+/* =========================================
+   BIBLIOGRAPHIE
+========================================= */
+
+.bibliographie {
+    scroll-margin-top: 30px;
+}
+
+.categorie-ressources {
+    margin-bottom: 85px;
+}
+
+
+/* TITRES DES CATEGORIES */
+
+.categorie-titre {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+.numero-categorie {
+    width: 62px;
+    height: 62px;
+    min-width: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #151a20;
+    color: #27d9c5;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 12px;
+}
+
+.categorie-titre h2 {
+    color: #151a20;
+    font-size: 25px;
+    text-align: left;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.categorie-titre p {
+    color: #7a858d;
+    font-size: 14px;
+    text-align: left;
+}
+
+
+/* =========================================
+   CARTES
+========================================= */
+
+.grille-ressources {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.grille-deux {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.carte-ressource {
+    background: white;
+    padding: 28px;
+    border-radius: 12px;
+    border: 1px solid #e1e7e9;
+    border-top: 4px solid #27d9c5;
+    box-shadow: 0 4px 15px rgba(21, 26, 32, 0.04);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.carte-ressource:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(21, 26, 32, 0.09);
+}
+
+.carte-principale {
+    background: #eaf9f7;
+    border-top: 4px solid #159e91;
+}
+
+.type-ressource {
+    align-self: flex-start;
+    display: inline-block;
+    background: #e5f8f5;
+    color: #128f83;
+    padding: 7px 11px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+}
+
+.carte-ressource h3 {
+    color: #151a20;
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: left;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.carte-ressource h3 em {
+    color: #34434c;
+}
+
+.carte-ressource p {
+    color: #59656e;
+    font-size: 14px;
+    line-height: 1.85;
+    text-align: justify;
+    margin-bottom: 18px;
+}
+
+.carte-ressource .titre-article {
+    color: #34434c;
+    font-weight: 600;
+}
+
+.lien-source {
+    align-self: flex-start;
+    display: inline-block;
+    margin-top: auto;
+    padding: 10px 0 5px;
+    color: #128f83;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid #27d9c5;
+    transition: 0.2s;
+}
+
+.lien-source:hover {
+    color: #151a20;
+    border-color: #151a20;
+}
+
+
+/* SOURCE PRINCIPALE */
+
+.source-bas {
+    border-top: 1px solid #cce9e4;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.source-bas span {
+    color: #128f83;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   CONCLUSION DE LA PAGE
+========================================= */
+
+.fin-ressources {
+    background: #151a20;
+    border-radius: 16px;
+    padding: 45px;
+    text-align: center;
+    margin: 30px 0 60px;
+}
+
+.fin-icone {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 20px;
+    background: #27d9c5;
+    color: #151a20;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.fin-ressources h2 {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.fin-ressources p {
+    max-width: 750px;
+    margin: 0 auto;
+    color: #d0d9de;
+    font-size: 15px;
+    line-height: 1.9;
+    text-align: center;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer-site {
+    background: #151a20;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.footer-site p {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.footer-site span {
+    color: #27d9c5;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media screen and (max-width: 850px) {
+
+    .hero-ressources {
+        padding: 40px;
+    }
+
+    .hero-decoration {
+        transform: scale(0.75);
+        margin-right: -15px;
+    }
+
+    .presentation-ressources {
+        gap: 25px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+
+    .page-ressources {
+        padding: 25px 16px;
+    }
+
+    .hero-ressources {
+        padding: 35px 25px;
+        min-height: auto;
+    }
+
+    .hero-ressources h1 {
+        font-size: 34px;
+    }
+
+    .hero-ressources p {
+        font-size: 14px;
+    }
+
+    .hero-decoration {
+        display: none;
+    }
+
+    .presentation-ressources {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 45px 0 60px;
+        padding: 0;
+    }
+
+    .presentation-ressources h2 {
+        font-size: 22px;
+    }
+
+    .grille-ressources,
+    .grille-deux {
+        grid-template-columns: 1fr;
+    }
+
+    .categorie-titre {
+        gap: 14px;
+    }
+
+    .numero-categorie {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        font-size: 16px;
+    }
+
+    .categorie-titre h2 {
+        font-size: 20px;
+    }
+
+    .categorie-titre p {
+        font-size: 12px;
+    }
+
+    .carte-ressource {
+        padding: 22px;
+    }
+
+    .fin-ressources {
+        padding: 30px 20px;
+    }
+
+    .fin-ressources h2 {
+        font-size: 21px;
+    }
+
+}

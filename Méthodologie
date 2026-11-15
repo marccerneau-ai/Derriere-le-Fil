@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pas intéressé</title>
+    <link rel="stylesheet" href="L'enquête.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="brand">
+            <h1>Pas intéressé :</h1>
+            <p>qui contrôle vraiment le fil ?</p>
+        </div>
+
+        <nav class="navigation">
+            <a href="Accueil.html" class="nav-link active">Accueil</a>
+            <a href="#contexte" class="nav-link">Le contexte</a>
+            <a href="L'enquête.html" class="nav-link">L'enquête</a>
+            <a href="Résultats.html" class="nav-link">Les résultats</a>
+            <a href="Résultats.html" class="nav-link">Conclusion</a>
+            <a href="#ressources" class="nav-link">Ressources</a>
+        </nav>
+
+        <a href="#apropos" class="about">
+            <span class="info-icon">i</span>
+            <span>À propos</span>
+        </a>
+        <link rel="stylesheet" href="L'enquête.css">
+    </header>
+    <main>
+        <h1>Une enquête, plusieurs regards</h1>
+        <p>  Pour comprendre comment TikTok façonne nos recommandations, nous avons choisi d'étudier un cas concret : 
+        la circulation des vidéos relayant l'appel à une mobilisation des Gilets jaunes du 17 octobre 2026. <br>
+        Notre enquête repose sur une expérimentation comparative menée à partir de six comptes TikTok répartis en trois groupes. 
+        Après avoir visionné les mêmes vidéos, chaque groupe adopte un comportement différent : utiliser la fonction « Pas intéressé », 
+        liker les publications ou simplement les regarder sans autre interaction. <br>
+        Nous observons ensuite l'évolution des recommandations dans le fil « Pour toi », avant l'intervention, juste après et vingt-quatre 
+        heures plus tard. Cette expérience est complétée par l'analyse d'un corpus de publications publiques et par des entretiens avec des 
+        utilisateurs de TikTok. <br>
+        En croisant ces différentes approches, nous cherchons à comprendre dans quelle mesure nos interactions influencent les contenus 
+        qui nous sont proposés, mais aussi quelles sont les limites de notre pouvoir d'action face à la personnalisation algorithmique. <br>
+        Notre objectif : confronter les mécanismes annoncés par la plateforme aux recommandations réellement observées, sans présumer 
+        de leur fonctionnement ni généraliser les résultats de notre expérimentation. <br>
+        Projet réalisé dans le cadre du cours de culture du numérique.<br></p>
+    </main>
+</body>
+</html>
