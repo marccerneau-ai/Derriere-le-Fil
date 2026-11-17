@@ -163,19 +163,11 @@ body {
     }
 }
 
-/* =========================================
-   CONTENU PRINCIPAL
-========================================= */
-
 .ressources {
     max-width: 1120px;
     width: 90%;
     margin: 55px auto 70px;
 }
-
-/* =========================================
-   BANDEAU D'INTRODUCTION
-========================================= */
 
 .ressources-intro {
     position: relative;
@@ -186,8 +178,6 @@ body {
     border-radius: 16px;
     margin-bottom: 65px;
 }
-
-/* Décoration graphique */
 
 .ressources-intro::before {
     content: "";
@@ -211,8 +201,6 @@ body {
     top: -52px;
 }
 
-/* Petit surtitre */
-
 .ressources-label {
     display: inline-block;
     color: var(--turquoise);
@@ -221,8 +209,6 @@ body {
     letter-spacing: 2.5px;
     margin-bottom: 16px;
 }
-
-/* Grand titre */
 
 .ressources-intro h1 {
     position: relative;
@@ -234,8 +220,6 @@ body {
     letter-spacing: -1px;
 }
 
-/* Texte introductif */
-
 .ressources-intro p {
     position: relative;
     z-index: 1;
@@ -244,10 +228,6 @@ body {
     font-size: 16px;
     line-height: 1.9;
 }
-
-/* =========================================
-   SECTIONS DE RESSOURCES
-========================================= */
 
 .ressources-section {
     display: grid;
@@ -258,10 +238,6 @@ body {
     border-bottom: 1px solid var(--bordure);
 }
 
-/* =========================================
-   TITRES DES SECTIONS
-========================================= */
-
 .section-heading {
     grid-column: 1 / -1;
     display: flex;
@@ -269,8 +245,6 @@ body {
     gap: 20px;
     margin-bottom: 12px;
 }
-
-/* Numéros 01, 02, 03, 04 */
 
 .section-number {
     flex-shrink: 0;
@@ -287,8 +261,6 @@ body {
     box-shadow: 0 5px 13px rgba(39, 217, 197, 0.2);
 }
 
-/* Titres */
-
 .section-heading h2 {
     color: var(--noir);
     font-size: 26px;
@@ -300,10 +272,6 @@ body {
     color: var(--texte-secondaire);
     font-size: 14px;
 }
-
-/* =========================================
-   CARTES DES RÉFÉRENCES
-========================================= */
 
 .ressource-card {
     background: var(--blanc);
@@ -320,25 +288,17 @@ body {
         border-color 0.25s ease;
 }
 
-/* Effet au survol */
-
 .ressource-card:hover {
     transform: translateY(-4px);
     border-color: #a8e9e1;
     box-shadow: 0 12px 27px rgba(21, 26, 32, 0.08);
 }
 
-/* Carte de l'article de départ */
-
 .ressource-card.principale {
     grid-column: 1 / -1;
     border-left: 5px solid var(--turquoise);
     padding: 35px 38px;
 }
-
-/* =========================================
-   ÉTIQUETTES DES SOURCES
-========================================= */
 
 .ressource-type {
     display: inline-block;
@@ -353,10 +313,6 @@ body {
     margin-bottom: 17px;
 }
 
-/* =========================================
-   TITRES DES RÉFÉRENCES
-========================================= */
-
 .ressource-card h3 {
     color: var(--noir);
     font-size: 16px;
@@ -370,20 +326,12 @@ body {
     font-weight: 500;
 }
 
-/* =========================================
-   DESCRIPTIONS
-========================================= */
-
 .ressource-card p {
     color: var(--texte);
     font-size: 14px;
     line-height: 1.9;
     margin-top: 16px;
 }
-
-/* =========================================
-   LIENS VERS LES ARTICLES
-========================================= */
 
 .ressource-link {
     display: inline-flex;
@@ -415,10 +363,6 @@ body {
     transform: translate(3px, -3px);
 }
 
-/* =========================================
-   CARTE DE L'ARTICLE DE DÉPART
-========================================= */
-
 .ressource-card.principale h3 {
     font-size: 19px;
     max-width: 900px;
@@ -429,8 +373,6 @@ body {
     line-height: 2;
     max-width: 950px;
 }
-
-/* BOUTON FIN */
 
 .fin-container {
     display: flex;
@@ -512,10 +454,6 @@ body {
     }
 }
 
-/* =========================================
-   PIED DE PAGE
-========================================= */
-
 .ressources-footer {
     position: relative;
     background: #e4f9f6;
@@ -530,10 +468,6 @@ body {
     font-size: 15px;
     line-height: 1.9;
 }
-
-/* =========================================
-   ANIMATIONS
-========================================= */
 
 @media (prefers-reduced-motion: no-preference) {
     .ressource-card {
@@ -553,10 +487,6 @@ body {
     }
 }
 
-/* =========================================
-   TABLETTES
-========================================= */
-
 @media screen and (max-width: 950px) {
     .header {
         justify-content: center;
@@ -575,10 +505,6 @@ body {
         padding: 50px 40px;
     }
 }
-
-/* =========================================
-   MOBILES
-========================================= */
 
 @media screen and (max-width: 650px) {
     .header {

@@ -109,17 +109,12 @@ body {
     font-size: 10px;
     font-weight: bold;
 }
-/* ==================================
-   PAGE DES RESULTATS
-================================== */
 
 .results-page {
     max-width: 1150px;
     margin: 65px auto;
     padding: 0 35px;
 }
-
-/* INTRODUCTION */
 
 .intro-results {
     margin-bottom: 65px;
@@ -182,9 +177,6 @@ body {
     margin: 10px 0 0;
 }
 
-
-/* TITRES ET SECTIONS */
-
 .results-page section {
     margin-bottom: 75px;
 }
@@ -209,9 +201,6 @@ body {
     max-width: 850px;
     margin-bottom: 30px !important;
 }
-
-
-/* MODELES MATHEMATIQUES */
 
 .theory-card {
     display: flex;
@@ -282,9 +271,6 @@ body {
     padding: 5px 8px 0;
 }
 
-
-/* COMPARAISON DES GROUPES */
-
 .group-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -353,9 +339,6 @@ body {
     margin-bottom: 0 !important;
 }
 
-
-/* TABLEAU */
-
 .table-container {
     width: 100%;
     overflow-x: auto;
@@ -407,9 +390,6 @@ body {
     font-style: italic;
     margin-top: 15px;
 }
-
-
-/* INTERPRETATION */
 
 .interpretation-grid {
     display: flex;
@@ -463,9 +443,6 @@ body {
     color: #536c83;
     background: #edf2f6;
 }
-
-
-/* CONCLUSION */
 
 .final-results {
     background: #ffffff;
@@ -603,9 +580,6 @@ body {
     transform: scale(1.05);
 }
 
-
-/* PIED DE PAGE */
-
 .results-page .phrase-finale {
     text-align: center;
     font-style: italic;
@@ -614,9 +588,6 @@ body {
     margin-top: 55px;
     margin-bottom: 20px;
 }
-
-
-/* RESPONSIVE */
 
 @media screen and (max-width: 900px) {
 

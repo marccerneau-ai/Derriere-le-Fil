@@ -168,7 +168,6 @@ body {
     }
 }
 
-
 .document-pdf {
     display: flex;
     align-items: center;
@@ -187,8 +186,6 @@ body {
 
     box-shadow: 0 4px 15px rgba(0,0,0,0.04);
 }
-
-/* Icône PDF */
 
 .pdf-icon {
     display: flex;
@@ -223,8 +220,6 @@ body {
     font-size: 13px;
     color: #7b8790;
 }
-
-/* Boutons */
 
 .pdf-actions {
     display: flex;

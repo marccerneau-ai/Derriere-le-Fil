@@ -208,16 +208,9 @@ body {
     transition: transform 0.8s ease;
 }
 
-/* Retournement */
-
 .card.flipped .card-inner {
     transform: rotateY(180deg);
 }
-
-
-/* ==============================
-   FACE AVANT
-============================== */
 
 .container {
     display: flex;
@@ -325,10 +318,6 @@ body {
     justify-content: center;
 }
 
-/* ==============================
-   FACE ARRIÈRE
-============================== */
-
 .back {
     background: #142f53;
     color: white;
@@ -353,11 +342,6 @@ body {
     line-height: 1.6;
 }
 
-
-/* ==============================
-   BOUTON DÉCOUVRIR
-============================== */
-
 .back button {
     background: #2476d2;
     color: white;
@@ -374,11 +358,6 @@ body {
     background: #4895ee;
     transform: scale(1.05);
 }
-
-
-/* ==============================
-   EFFET AU SURVOL
-============================== */
 
 .card:hover .card-inner:not(.flipped) {
     transform: translateY(-7px);
@@ -409,11 +388,6 @@ body {
     transform: scale(1.05);
 }
 
-
-/* ==============================
-   RESPONSIVE TABLETTES
-============================== */
-
 @media screen and (max-width: 1000px) {
 
     .header {
@@ -430,11 +404,6 @@ body {
     }
 
 }
-
-
-/* ==============================
-   RESPONSIVE TÉLÉPHONES
-============================== */
 
 @media screen and (max-width: 650px) {
 

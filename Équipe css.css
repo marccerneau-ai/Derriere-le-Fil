@@ -168,10 +168,6 @@ body {
     }
 }
 
-/* =====================================
-   CONTENU PRINCIPAL
-===================================== */
-
 .enquete {
     width: 90%;
     max-width: 1000px;
@@ -186,10 +182,6 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 }
 
-/* =====================================
-   SOUS-TITRE
-===================================== */
-
 .sous-titre {
     font-family: Arial, sans-serif;
     text-transform: uppercase;
@@ -199,10 +191,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* =====================================
-   TITRE PRINCIPAL
-===================================== */
-
 .enquete h1 {
     font-size: 40px;
     font-weight: normal;
@@ -210,20 +198,12 @@ body {
     margin-bottom: 20px;
 }
 
-/* =====================================
-   LIGNE DÉCORATIVE
-===================================== */
-
 .ligne {
     width: 70px;
     height: 2px;
     background-color: #a18455;
     margin: 25px auto 45px;
 }
-
-/* =====================================
-   GRILLE DES MEMBRES
-===================================== */
 
 .equipe {
     display: grid;
@@ -259,10 +239,6 @@ body {
     text-transform: uppercase;
 }
 
-/* =====================================
-   DIRECTION DU PROJET
-===================================== */
-
 .direction {
     width: 100%;
     max-width: 750px;
@@ -279,10 +255,6 @@ body {
     color: #263445;
 }
 
-/* =====================================
-   INFORMATIONS DU COURS
-===================================== */
-
 .cours {
     margin-top: 35px;
     font-family: Arial, sans-serif;
@@ -290,10 +262,6 @@ body {
     line-height: 1.8;
     color: #777777;
 }
-
-/* =====================================
-   TABLETTES
-===================================== */
 
 @media screen and (max-width: 1000px) {
 
@@ -311,10 +279,6 @@ body {
         justify-content: center;
     }
 }
-
-/* =====================================
-   TÉLÉPHONES
-===================================== */
 
 @media screen and (max-width: 600px) {
 

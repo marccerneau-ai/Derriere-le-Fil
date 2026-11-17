@@ -26,11 +26,6 @@ body {
     line-height: 1.7;
 }
 
-
-/* =========================================
-   HEADER — IDENTIQUE AUX AUTRES PAGES
-========================================= */
-
 .site-header {
     width: 100%;
     min-height: 82px;
@@ -134,10 +129,6 @@ body {
     font-weight: bold;
 }
 
-/* =========================================
-   HERO — INTRODUCTION
-========================================= */
-
 .hero {
     position: relative;
     max-width: 1120px;
@@ -225,11 +216,6 @@ body {
     font-weight: 600;
 }
 
-
-/* =========================================
-   STRUCTURE GÉNÉRALE DES SECTIONS
-========================================= */
-
 .method-section {
     max-width: 1120px;
     width: 90%;
@@ -274,11 +260,6 @@ body {
     line-height: 1.3;
     margin-top: 4px;
 }
-
-
-/* =========================================
-   01 — DISPOSITIF
-========================================= */
 
 .intro-card {
     background: white;
@@ -401,11 +382,6 @@ body {
     line-height: 1.9;
     text-align: justify;
 }
-
-
-/* =========================================
-   02 — OBSERVATIONS
-========================================= */
 
 .observation-list {
     display: flex;
@@ -542,11 +518,6 @@ body {
     text-align: justify;
 }
 
-
-/* =========================================
-   03 — CODAGE DES DONNÉES
-========================================= */
-
 .coding-intro {
     background: white;
     border: 1px solid var(--bordure);
@@ -664,11 +635,6 @@ body {
     line-height: 1.9;
     text-align: justify;
 }
-
-
-/* =========================================
-   04 — LIMITES MÉTHODOLOGIQUES
-========================================= */
 
 .limits-intro {
     background: white;
@@ -790,12 +756,6 @@ body {
     transform: scale(1.05);
 }
 
-
-
-/* =========================================
-   PIED DE PAGE
-========================================= */
-
 .site-footer {
     background: var(--noir);
     padding: 25px 5%;
@@ -807,11 +767,6 @@ body {
     color: #d2d9dd;
     font-size: 12px;
 }
-
-
-/* =========================================
-   TABLETTES
-========================================= */
 
 @media (max-width: 950px) {
 
@@ -846,11 +801,6 @@ body {
         padding: 50px 40px;
     }
 }
-
-
-/* =========================================
-   MOBILES
-========================================= */
 
 @media (max-width: 650px) {
 
@@ -996,11 +946,6 @@ body {
     }
 }
 
-
-/* =========================================
-   PETITS ÉCRANS
-========================================= */
-
 @media (max-width: 400px) {
 
     .brand {
@@ -1024,11 +969,6 @@ body {
         height: 40px;
     }
 }
-
-
-/* =========================================
-   ANIMATIONS
-========================================= */
 
 @media (prefers-reduced-motion: no-preference) {
 

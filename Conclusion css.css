@@ -1,8 +1,3 @@
-
-/* =========================================
-   VARIABLES ET BASE
-========================================= */
-
 :root {
     --dark: #151a20;
     --dark-light: #222c34;
@@ -39,11 +34,6 @@ main {
     max-width: 1400px;
     margin: 40px auto;
 }
-
-
-/* =========================================
-   HEADER — IDENTIQUE À LA PAGE ACCUEIL
-========================================= */
 
 .header {
     width: 100%;
@@ -149,8 +139,6 @@ main {
     font-weight: bold;
 }
 
-/* TABLETTES */
-
 @media (max-width: 900px) {
     .header {
         flex-wrap: wrap;
@@ -174,8 +162,6 @@ main {
     }
 }
 
-/* MOBILES */
-
 @media (max-width: 480px) {
     .brand h1 {
         font-size: 20px;
@@ -189,10 +175,6 @@ main {
         gap: 22px;
     }
 }
-
-/* =========================================
-   HERO
-========================================= */
 
 .hero {
     min-height: 360px;
@@ -295,11 +277,6 @@ main {
     font-weight: 900;
 }
 
-
-/* =========================================
-   CHIFFRES CLÉS
-========================================= */
-
 .key-figures {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -333,11 +310,6 @@ main {
     color: var(--text);
     font-size: 12px;
 }
-
-
-/* =========================================
-   GRANDES PARTIES
-========================================= */
 
 .main-section {
     margin: 85px 0;
@@ -385,11 +357,6 @@ main {
     margin-top: 6px;
 }
 
-
-/* =========================================
-   INTRO TEXTE
-========================================= */
-
 .intro-text {
     padding: 22px 27px;
     background: var(--dark);
@@ -403,11 +370,6 @@ main {
     font-size: 16px;
     font-weight: 600;
 }
-
-
-/* =========================================
-   HYPOTHÈSES
-========================================= */
 
 .hypotheses-grid {
     display: grid;
@@ -484,11 +446,6 @@ main {
     line-height: 1.85;
 }
 
-
-/* =========================================
-   NOTE MÉTHODOLOGIQUE
-========================================= */
-
 .method-note {
     display: flex;
     align-items: center;
@@ -516,11 +473,6 @@ main {
     line-height: 1.8;
 }
 
-
-/* =========================================
-   TITRES ÉDITORIAUX
-========================================= */
-
 .editorial-title {
     margin: 55px 0 20px;
     padding-left: 18px;
@@ -540,11 +492,6 @@ main {
     line-height: 1.4;
 }
 
-
-/* =========================================
-   CARTES TEXTE
-========================================= */
-
 .text-card {
     background: white;
     padding: 30px 35px;
@@ -563,11 +510,6 @@ main {
 .text-card p:last-child {
     margin-bottom: 0;
 }
-
-
-/* =========================================
-   ÉVÉNEMENT
-========================================= */
 
 .event-layout {
     display: grid;
@@ -636,11 +578,6 @@ main {
     margin-bottom: 0;
 }
 
-
-/* =========================================
-   CRÉATEURS
-========================================= */
-
 .creator-card {
     margin-top: 30px;
     padding: 30px;
@@ -675,11 +612,6 @@ main {
     line-height: 1.9;
     margin-bottom: 12px;
 }
-
-
-/* =========================================
-   PARTIE VII : PRINCIPES
-========================================= */
 
 .theory-intro {
     background: white;
@@ -753,11 +685,6 @@ main {
     margin-bottom: 0;
 }
 
-
-/* =========================================
-   GRANDE CONCLUSION
-========================================= */
-
 .big-conclusion {
     margin-top: 30px;
     padding: 38px;
@@ -780,11 +707,6 @@ main {
     font-weight: 600;
     margin-top: 15px;
 }
-
-
-/* =========================================
-   PARTIE VIII : LIMITES
-========================================= */
 
 .limits-intro {
     display: flex;
@@ -892,11 +814,6 @@ main {
     font-size: 14px;
     line-height: 1.9;
 }
-
-
-/* =========================================
-   PARTIE IX : PROJET
-========================================= */
 
 .project-hero {
     padding: 45px;
@@ -1048,11 +965,6 @@ main {
     color: var(--dark);
 }
 
-
-/* =========================================
-   CONCLUSION FINALE
-========================================= */
-
 .final-banner {
     position: relative;
     overflow: hidden;
@@ -1115,10 +1027,6 @@ main {
     transform: scale(1.05);
 }
 
-/* =========================================
-   FOOTER
-========================================= */
-
 .footer {
     display: flex;
     justify-content: space-between;
@@ -1147,11 +1055,6 @@ main {
     color: var(--dark);
 }
 
-
-/* =========================================
-   TABLETTES
-========================================= */
-
 @media screen and (max-width: 950px) {
 
     .header {
@@ -1177,11 +1080,6 @@ main {
         grid-column: 1 / -1;
     }
 }
-
-
-/* =========================================
-   MOBILES
-========================================= */
 
 @media screen and (max-width: 650px) {
 
@@ -1430,11 +1328,6 @@ main {
         text-align: center;
     }
 }
-
-
-/* =========================================
-   ACCESSIBILITÉ
-========================================= */
 
 a:focus-visible {
     outline: 3px solid var(--turquoise);
